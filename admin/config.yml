@@ -1,44 +1,48 @@
 backend:
   name: git-gateway
   branch: main
+  squash_merges: true
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "projects"
-    label: "Проекты"
+    label: "🚀 Проекты"
     folder: "_projects"
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Название", name: "title", widget: "string", required: true }
       - { label: "Иконка (эмодзи)", name: "icon", widget: "string", default: "🚀" }
-      - { label: "Описание", name: "description", widget: "text" }
-      - { label: "Ссылка", name: "link", widget: "string" }
-      - { label: "Порядок", name: "order", widget: "number", default: 0 }
+      - { label: "Описание", name: "description", widget: "text", required: true }
+      - { label: "Ссылка", name: "link", widget: "string", required: true }
+      - { label: "Порядок сортировки", name: "order", widget: "number", default: 0, value_type: "int" }
 
   - name: "reviews"
-    label: "Отзывы"
+    label: "⭐ Отзывы"
     folder: "_reviews"
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Имя", name: "name", widget: "string" }
+      - { label: "Имя", name: "name", widget: "string", required: true }
       - { label: "Аватар (эмодзи)", name: "avatar", widget: "string", default: "🦊" }
-      - { label: "Оценка (1-5)", name: "rating", widget: "number", default: 5 }
-      - { label: "Текст отзыва", name: "text", widget: "text" }
-      - { label: "Дата", name: "date", widget: "string" }
+      - { label: "Оценка (1-5)", name: "rating", widget: "number", default: 5, value_type: "int", min: 1, max: 5 }
+      - { label: "Текст отзыва", name: "text", widget: "text", required: true }
+      - { label: "Дата", name: "date", widget: "string", default: "2026" }
 
   - name: "faq"
-    label: "FAQ"
+    label: "❓ FAQ (Частые вопросы)"
     folder: "_faq"
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Вопрос", name: "question", widget: "string" }
-      - { label: "Ответ", name: "answer", widget: "text" }
-      - { label: "Порядок", name: "order", widget: "number", default: 0 }
+      - { label: "Вопрос", name: "question", widget: "string", required: true }
+      - { label: "Ответ", name: "answer", widget: "text", required: true }
+      - { label: "Порядок сортировки", name: "order", widget: "number", default: 0, value_type: "int" }
 
   - name: "settings"
-    label: "Настройки сайта"
+    label: "⚙️ Настройки сайта"
     files:
       - name: "general"
         label: "Общие настройки"
@@ -47,3 +51,4 @@ collections:
           - { label: "Заголовок героя", name: "hero_title", widget: "string", default: "🦊 ТехноЛис" }
           - { label: "Подзаголовок героя", name: "hero_subtitle", widget: "string", default: "Создание сайтов на чистом коде. Быстро, красиво, надёжно." }
           - { label: "Текст обо мне", name: "about_text", widget: "text", default: "Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript." }
+          - { label: "Телефон", name: "phone", widget: "string", default: "+7 (999) 123-45-67" }
