@@ -1,0 +1,49 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projects"
+    label: "Проекты"
+    folder: "_projects"
+    create: true
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Иконка (эмодзи)", name: "icon", widget: "string", default: "🚀" }
+      - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Ссылка", name: "link", widget: "string" }
+      - { label: "Порядок", name: "order", widget: "number", default: 0 }
+
+  - name: "reviews"
+    label: "Отзывы"
+    folder: "_reviews"
+    create: true
+    fields:
+      - { label: "Имя", name: "name", widget: "string" }
+      - { label: "Аватар (эмодзи)", name: "avatar", widget: "string", default: "🦊" }
+      - { label: "Оценка (1-5)", name: "rating", widget: "number", default: 5 }
+      - { label: "Текст отзыва", name: "text", widget: "text" }
+      - { label: "Дата", name: "date", widget: "string" }
+
+  - name: "faq"
+    label: "FAQ"
+    folder: "_faq"
+    create: true
+    fields:
+      - { label: "Вопрос", name: "question", widget: "string" }
+      - { label: "Ответ", name: "answer", widget: "text" }
+      - { label: "Порядок", name: "order", widget: "number", default: 0 }
+
+  - name: "settings"
+    label: "Настройки сайта"
+    files:
+      - name: "general"
+        label: "Общие настройки"
+        file: "_data/settings.json"
+        fields:
+          - { label: "Заголовок героя", name: "hero_title", widget: "string", default: "🦊 ТехноЛис" }
+          - { label: "Подзаголовок героя", name: "hero_subtitle", widget: "string", default: "Создание сайтов на чистом коде. Быстро, красиво, надёжно." }
+          - { label: "Текст обо мне", name: "about_text", widget: "text", default: "Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript." }
