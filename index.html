@@ -5,31 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТехноЛис | Создание сайтов</title>
     <style>
-        :root { 
-            --bg-primary: #0a0a0c; 
-            --bg-secondary: #121216; 
-            --bg-card: rgba(26, 26, 32, 0.7); 
-            --text-primary: #f0f0f0; 
-            --text-secondary: #a0a0a0; 
-            --accent: #ff6b00; 
-            --accent-light: #ff9500; 
-            --border: rgba(255, 107, 0, 0.2); 
-            --glow: 0 0 20px rgba(255, 107, 0, 0.3);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
+        :root { --bg-primary: #0a0a0c; --bg-secondary: #121216; --bg-card: rgba(26, 26, 32, 0.7); --text-primary: #f0f0f0; --text-secondary: #a0a0a0; --accent: #ff6b00; --accent-light: #ff9500; --border: rgba(255, 107, 0, 0.2); --glow: 0 0 20px rgba(255, 107, 0, 0.3); }
+        [data-theme="light"] { --bg-primary: #f4f4f5; --bg-secondary: #ffffff; --bg-card: rgba(255, 255, 255, 0.7); --text-primary: #1a1a1a; --text-secondary: #555555; --accent: #e65c00; --accent-light: #ff7a00; --border: rgba(230, 92, 0, 0.2); --glow: 0 0 20px rgba(230, 92, 0, 0.15); }
+        [data-theme="fire"] { --bg-primary: #1a0a0a; --bg-secondary: #2a1010; --bg-card: rgba(58, 21, 21, 0.7); --text-primary: #fff0f0; --text-secondary: #ffaaaa; --accent: #ff3300; --accent-light: #ff5500; --border: rgba(255, 51, 0, 0.3); --glow: 0 0 20px rgba(255, 51, 0, 0.4); }
+        [data-theme="snow"] { --bg-primary: #0a1a2a; --bg-secondary: #102030; --bg-card: rgba(21, 37, 53, 0.7); --text-primary: #f0f8ff; --text-secondary: #aaccdd; --accent: #00aaff; --accent-light: #55ccff; --border: rgba(0, 170, 255, 0.2); --glow: 0 0 20px rgba(0, 170, 255, 0.3); }
+        [data-theme="night"] { --bg-primary: #050510; --bg-secondary: #0a0a1a; --bg-card: rgba(15, 15, 37, 0.7); --text-primary: #e0e0ff; --text-secondary: #8888aa; --accent: #aa00ff; --accent-light: #cc55ff; --border: rgba(170, 0, 255, 0.2); --glow: 0 0 20px rgba(170, 0, 255, 0.3); }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body { 
             font-family: 'Segoe UI', system-ui, sans-serif; 
             background-color: var(--bg-primary); 
             color: var(--text-primary); 
             line-height: 1.6; 
-            overflow-x: hidden;
+            overflow-x: hidden; 
+            cursor: none; 
         }
         
-        /* АНИМАЦИИ ПОЯВЛЕНИЯ */
+        a { color: var(--accent); text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--accent-light); text-shadow: var(--glow); }
+        
+        /* КУРСОР */
+        .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); }
+        .cursor-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; transition: width 0.2s, height 0.2s; }
+        .cursor-ring { width: 40px; height: 40px; border: 2px solid var(--accent); border-radius: 50%; transition: width 0.3s, height 0.3s, border-color 0.3s; }
+        .cursor-hover .cursor-dot { width: 0; height: 0; }
+        .cursor-hover .cursor-ring { width: 60px; height: 60px; border-color: var(--accent-light); background: rgba(255, 107, 0, 0.1); }
+        
+        /* ЧАСТИЦЫ */
+        #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
+        
+        /* ХЕДЕР */
+        header { 
+            position: fixed; top: 0; width: 100%; padding: 20px 5%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(10px); 
+            border-bottom: 1px solid var(--border); z-index: 100; 
+        }
+        [data-theme="light"] header { background: rgba(244, 244, 245, 0.8); }
+        
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--accent); letter-spacing: 2px; cursor: none; }
+        nav ul { display: flex; gap: 20px; list-style: none; }
+        nav a { color: var(--text-primary); font-weight: 500; }
+        
+        .theme-toggle { 
+            background: none; border: 2px solid var(--accent); color: var(--accent); 
+            padding: 8px 15px; border-radius: 20px; cursor: none; transition: 0.3s; 
+        }
+        .theme-toggle:hover { background: var(--accent); color: var(--bg-primary); }
+        
+        /* СЕКЦИИ */
+        section { padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        
+        .section-title { 
+            font-size: 2.5rem; margin-bottom: 40px; position: relative; display: inline-block; 
+        }
+        .section-title::after { 
+            content: ''; position: absolute; bottom: -10px; left: 0; 
+            width: 50%; height: 3px; background: var(--accent); box-shadow: var(--glow); 
+        }
+        
+        /* АНИМАЦИИ */
         @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-100px); }
             to { opacity: 1; transform: translateX(0); }
@@ -45,9 +82,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
+        .slide-in-left { animation: slideInLeft 0.8s ease-out forwards; }
+        .slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        
+        .fade-in { opacity: 0; transform: translateY(50px); transition: opacity 0.8s, transform 0.8s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        /* HERO */
+        #hero { 
+            text-align: center; 
+            background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-primary));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
         }
         
         @keyframes gradientShift {
@@ -56,267 +103,183 @@
             100% { background-position: 0% 50%; }
         }
         
-        .slide-in-left {
-            opacity: 0;
-            animation: slideInLeft 0.8s ease-out forwards;
+        #hero h1 { font-size: 4rem; margin-bottom: 20px; }
+        #hero h1 span { 
+            color: var(--accent); text-shadow: var(--glow); 
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent)); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; 
+            animation: gradientShift 3s ease infinite; 
         }
         
-        .slide-in-right {
-            opacity: 0;
-            animation: slideInRight 0.8s ease-out forwards;
+        .typewriter { 
+            display: inline-block; border-right: 3px solid var(--accent); 
+            animation: blink 0.7s step-end infinite; 
         }
         
-        .fade-in-up {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
+        @keyframes blink { 
+            from, to { border-color: transparent; } 
+            50% { border-color: var(--accent); } 
         }
         
-        /* HERO СЕКЦИЯ С ГРАДИЕНТОМ */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(-45deg, #0a0a0c, #1a0a0a, #0a1a2a, #1a1a0a);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            position: relative;
-            overflow: hidden;
-        }
+        #hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px; }
         
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 0, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+        .btn-primary { 
+            display: inline-block; padding: 15px 40px; background: var(--accent); color: #fff; 
+            border-radius: 30px; font-weight: bold; box-shadow: var(--glow); transition: 0.3s; cursor: none; border: none; font-size: 1rem; 
         }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 107, 0, 0.5); }
         
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            padding: 40px;
+        /* СТАТИСТИКА */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 50px 0; }
+        .stat-card { text-align: center; padding: 30px; background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 15px; }
+        .stat-number { font-size: 3rem; font-weight: bold; color: var(--accent); margin-bottom: 10px; }
+        .stat-label { color: var(--text-secondary); font-size: 1.1rem; }
+        
+        /* КАРТОЧКИ */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { 
+            background: var(--bg-card); backdrop-filter: blur(10px); 
+            border: 1px solid var(--border); border-radius: 15px; padding: 30px; 
+            transition: 0.4s; position: relative; overflow: hidden; 
         }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: var(--glow); }
+        .card h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.5rem; }
+        .card ul { padding-left: 20px; color: var(--text-secondary); }
+        .card ul li { margin-bottom: 8px; }
         
-        .hero-title {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s linear infinite;
-        }
+        /* FAQ */
+        .faq-item { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 15px; overflow: hidden; }
+        .faq-question { padding: 20px; cursor: none; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: var(--text-primary); }
+        .faq-question:hover { background: rgba(255, 107, 0, 0.05); }
+        .faq-icon { font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-secondary); }
+        .faq-item.active .faq-answer { max-height: 500px; }
+        .faq-answer-content { padding: 0 20px 20px; }
         
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--accent);
-            animation: typewriter 3s steps(40) 1s forwards, blink 0.7s step-end infinite;
-            width: 0;
-        }
+        /* ОТЗЫВЫ */
+        .review-card { display: flex; flex-direction: column; gap: 15px; }
+        .review-header { display: flex; align-items: center; gap: 15px; }
+        .review-avatar { width: 50px; height: 50px; background: var(--bg-primary); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+        .review-stars { font-size: 0.9rem; letter-spacing: 2px; }
+        .review-text { color: var(--text-secondary); font-style: italic; line-height: 1.7; flex-grow: 1; }
+        .review-date { color: var(--accent); font-size: 0.85rem; font-weight: bold; text-align: right; }
         
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
+        /* ФОРМЫ */
+        .brief-form { background: var(--bg-card); backdrop-filter: blur(10px); padding: 40px; border-radius: 15px; border: 1px solid var(--border); }
+        .brief-form label { display: block; margin-bottom: 5px; color: var(--text-secondary); font-weight: bold; }
+        .brief-form input, .brief-form select, .brief-form textarea { width: 100%; padding: 12px; margin-bottom: 20px; background: var(--bg-primary); border: 1px solid var(--border); color: var(--text-primary); border-radius: 8px; font-size: 1rem; }
+        .brief-form textarea { min-height: 80px; resize: vertical; }
+        .brief-output { width: 100%; min-height: 250px; padding: 15px; background: var(--bg-primary); border: 1px dashed var(--accent); color: var(--accent); font-family: monospace; border-radius: 8px; margin-top: 20px; font-size: 0.95rem; }
         
-        /* GLASSMORPHISM КАРТОЧКИ */
-        .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
+        /* SCROLL TOP */
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--accent); color: #fff; border: none; border-radius: 50%; font-size: 1.5rem; cursor: none; opacity: 0; visibility: hidden; transition: 0.3s; z-index: 1000; box-shadow: var(--glow); }
+        .scroll-top.visible { opacity: 1; visibility: visible; }
         
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 107, 0, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s;
-            opacity: 0;
-        }
-        
-        .card:hover::before {
-            opacity: 1;
-            animation: shimmer 1.5s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(255, 107, 0, 0.3);
-        }
-        
-        /* КНОПКИ С ЭФФЕКТОМ */
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: #fff;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.6);
-        }
-        
-        /* СЕКЦИИ */
-        section {
-            padding: 100px 10%;
-            min-height: 100vh;
-        }
-        
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 50px;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            border-radius: 2px;
-        }
-        
-        /* GRID */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        /* ЭФФЕКТ ПЕЧАТНОЙ МАШИНКИ ДЛЯ ТЕКСТА */
-        .typewriter-text {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--accent);
-            animation: typewriter 2s steps(40) forwards, blink 0.7s step-end infinite;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1rem; }
-            section { padding: 60px 5%; }
-            .grid { grid-template-columns: 1fr; }
+        /* АДАПТИВ */
+        @media (max-width: 768px) { 
+            body { cursor: auto; } 
+            .cursor-dot, .cursor-ring { display: none; } 
+            nav ul { display: none; } 
+            #hero h1 { font-size: 2.5rem; } 
+            section { padding: 80px 5%; } 
+            .grid { grid-template-columns: 1fr; } 
+            .stats-grid { grid-template-columns: 1fr; } 
         }
     </style>
 </head>
 <body>
-    <!-- HERO -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <canvas id="particles-canvas"></canvas>
+    <button class="scroll-top" id="scrollTop">⬆️</button>
+
+    <header>
+        <div class="logo">TECHNOLIS</div>
+        <nav>
+            <ul>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#brief">Заказать</a></li>
+            </ul>
+        </nav>
+        <button class="theme-toggle" id="themeToggle">🌙 Тема</button>
+    </header>
+
     <section id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">🦊 ТехноЛис</h1>
-            <p class="hero-subtitle">Создание сайтов на чистом коде. Быстро, красиво, надёжно.</p>
-            <a href="#contact" class="btn">Обсудить проект</a>
+        <h1>🦊 ТехноЛис <span class="typewriter" id="typewriter"></span></h1>
+        <p class="fade-in">Создание сайтов на чистом коде. Быстро, красиво, надёжно. Пацан умеет и могёт!</p>
+        <a href="#brief" class="btn-primary fade-in">Обсудить проект</a>
+    </section>
+
+    <section id="stats">
+        <h2 class="section-title fade-in">Мои достижения</h2>
+        <div class="stats-grid">
+            <div class="stat-card fade-in">
+                <div class="stat-number" data-target="10">0</div>
+                <div class="stat-label">Проектов завершено</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Довольных клиентов</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number" data-target="2">0</div>
+                <div class="stat-label">Года опыта</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number" data-target="99">0</div>
+                <div class="stat-label">% качества</div>
+            </div>
         </div>
     </section>
-    
-    <!-- О СЕБЕ -->
+
     <section id="about">
-        <h2 class="section-title slide-in-left">Обо мне</h2>
-        <div class="card slide-in-right" style="max-width: 800px; margin: 50px auto;">
-            <p style="font-size: 1.2rem; color: var(--text-secondary);">
-                Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript. 
-                Никаких конструкторов, только код. Каждый пиксель продуман, каждая анимация отточена.
-            </p>
-        </div>
+        <h2 class="section-title fade-in">Обо мне</h2>
+        <p class="fade-in" style="font-size: 1.2rem; max-width: 800px;">
+            Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript. 
+            Никаких конструкторов, только код. Каждый пиксель продуман, каждая анимация отточена. 
+            Мне 11 лет, и я уже создал свой язык программирования FOXKOD и мод для Minecraft Snowy Deserts.
+        </p>
     </section>
-    
-    <!-- ПРОЕКТЫ -->
+
     <section id="projects">
-        <h2 class="section-title slide-in-left">Мои работы</h2>
+        <h2 class="section-title fade-in">Мои работы</h2>
         <div class="grid">
-            <div class="card slide-in-left" style="animation-delay: 0.1s;">
-                <h3 style="color: var(--accent); margin-bottom: 15px;">🦊 FOXKOD</h3>
-                <p style="color: var(--text-secondary);">Язык программирования на русском языке. Мой пет-проект по разработке языка со полностью русским синтаксисом.</p>
+            <div class="card fade-in">
+                <h3>🦊 FOXKOD</h3>
+                <p>Язык программирования на русском языке. Мой пет-проект по разработке языка со полностью русским синтаксисом. Доказательство того, что кодить можно на любом языке!</p>
                 <br>
-                <a href="https://github.com/sanya2020st/FoxCode" target="_blank" class="btn" style="padding: 10px 25px; font-size: 0.9rem;">Посмотреть →</a>
+                <a href="https://github.com/sanya2020st/FoxCode" target="_blank">Посмотреть →</a>
             </div>
-            <div class="card slide-in-right" style="animation-delay: 0.2s;">
-                <h3 style="color: var(--accent); margin-bottom: 15px;">❄️ Snowy Deserts</h3>
-                <p style="color: var(--text-secondary);">Глобальный мод для Minecraft. Добавляет в игру уникальные снежные пустыни, новых мобов и экзотические блоки.</p>
+            <div class="card fade-in">
+                <h3>❄️ Snowy Deserts</h3>
+                <p>Глобальный мод для Minecraft. Добавляет в игру уникальные снежные пустыни, новых мобов и экзотические блоки. Тысячи игроков уже исследуют эти биомы.</p>
                 <br>
-                <a href="https://github.com/sanya2020st/Snowy-Deserts" target="_blank" class="btn" style="padding: 10px 25px; font-size: 0.9rem;">Посмотреть →</a>
+                <a href="https://github.com/sanya2020st/Snowy-Deserts" target="_blank">Посмотреть →</a>
             </div>
         </div>
     </section>
-    
-    <!-- УСЛУГИ -->
+
     <section id="services">
-        <h2 class="section-title slide-in-left">Услуги</h2>
+        <h2 class="section-title fade-in">Услуги и Тарифы</h2>
         <div class="grid">
-            <div class="card slide-in-left" style="animation-delay: 0.1s;">
-                <h3 style="color: var(--accent); margin-bottom: 15px;">💼 Веб-Мал</h3>
-                <p style="font-size: 2rem; color: var(--accent-light); font-weight: bold; margin-bottom: 15px;">от 240₽</p>
-                <ul style="color: var(--text-secondary); padding-left: 20px;">
+            <div class="card fade-in">
+                <h3>💼 Веб-Мал (НР)</h3>
+                <p style="font-size: 2rem; color: var(--accent); font-weight: bold;">от 240₽</p>
+                <ul>
                     <li>Одностраничный сайт</li>
                     <li>Адаптивный дизайн</li>
                     <li>Базовая анимация</li>
                 </ul>
             </div>
-            <div class="card slide-in-right" style="animation-delay: 0.2s;">
-                <h3 style="color: var(--accent); margin-bottom: 15px;">🚀 Веб-Большой</h3>
-                <p style="font-size: 2rem; color: var(--accent-light); font-weight: bold; margin-bottom: 15px;">от 760₽</p>
-                <ul style="color: var(--text-secondary); padding-left: 20px;">
+            <div class="card fade-in">
+                <h3>🚀 Веб-Большой (Р)</h3>
+                <p style="font-size: 2rem; color: var(--accent); font-weight: bold;">от 1060₽</p>
+                <ul>
                     <li>Многостраничный сайт</li>
                     <li>Админ-панель</li>
                     <li>Продвинутые анимации</li>
@@ -324,41 +287,223 @@
             </div>
         </div>
     </section>
-    
-    <!-- КОНТАКТЫ -->
-    <section id="contact">
-        <h2 class="section-title slide-in-left">Связаться со мной</h2>
-        <div class="card slide-in-right" style="max-width: 600px; margin: 50px auto; text-align: center;">
-            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px;">
-                Готов обсудить твой проект? Напиши мне!
-            </p>
-            <a href="#" class="btn">Написать в Max</a>
+
+    <section id="reviews">
+        <h2 class="section-title fade-in">Отзывы клиентов</h2>
+        <p class="fade-in" style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem;">Что говорят те, кто уже доверил мне свои проекты 🦊</p>
+        <div class="grid">
+            <div class="card fade-in review-card">
+                <div class="review-header">
+                    <div class="review-avatar">🦊</div>
+                    <div>
+                        <h4>ТехноЛис</h4>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <p class="review-text">"Вот так будет выглядеть твой отзыв!"</p>
+                <div class="review-date">Март 2025</div>
+            </div>
         </div>
     </section>
-    
-    <footer style="padding: 40px; text-align: center; border-top: 1px solid var(--border);">
+
+    <section id="faq">
+        <h2 class="section-title fade-in">Частые вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Сколько времени занимает создание сайта?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Сроки зависят от сложности проекта. Простой лендинг — от 1 дня, многостраничный сайт — от 3-7 дней.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Нужно ли мне самому покупать хостинг?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Да, хостинг и домен оплачиваются отдельно. Это твой цифровой дом, и он должен быть оформлен на тебя.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="brief">
+        <h2 class="section-title fade-in">Сгенерировать Бриф</h2>
+        <p class="fade-in" style="margin-bottom: 20px; color: var(--text-secondary);">Ответь на вопросы, и я сформирую готовое ТЗ!</p>
+        <div class="brief-form fade-in">
+            <label>1. Как к тебе обращаться?</label>
+            <input type="text" id="b-name" placeholder="Твой ник или имя">
+            <label>2. Какой тариф тебя интересует?</label>
+            <select id="b-type">
+                <option value="Веб-Мал (НР)">Веб-Мал (НР) - от 240₽</option>
+                <option value="Веб-Большой (Р)">Веб-Большой (Р) - от 1060₽</option>
+            </select>
+            <label>3. О чем будет сайт?</label>
+            <textarea id="b-niche" placeholder="Например: Сайт-визитка для автосервиса..."></textarea>
+            <label>4. Твой контакт для связи</label>
+            <input type="text" id="b-contact" placeholder="@твой_ник_в_max">
+            <button class="btn-primary" onclick="generateBrief()" style="width: 100%; margin-top: 10px;">🦊 Сгенерировать ТЗ</button>
+            <textarea class="brief-output" id="b-output" readonly placeholder="Здесь появится твой бриф..."></textarea>
+            <button class="btn-primary" onclick="copyBrief()" style="width: 100%; margin-top: 10px; background: var(--bg-card); color: var(--accent); border: 1px solid var(--accent);">📋 Скопировать</button>
+        </div>
+    </section>
+
+    <footer style="padding: 50px 10%; text-align: center; border-top: 1px solid var(--border);">
         <p style="color: var(--text-secondary);">© 2026 ТехноЛис. Сделано с 🦊 и ❤️</p>
     </footer>
-    
+
     <script>
-        // Intersection Observer для анимаций при скролле
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        // Печатная машинка
+        const typewriterElement = document.getElementById('typewriter');
+        const words = ["будущего", "быстро", "красиво", "надёжно", "с душой"];
+        let wordIndex = 0, charIndex = 0, isDeleting = false;
         
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) { 
+                typewriterElement.textContent = currentWord.substring(0, charIndex - 1); 
+                charIndex--; 
+            } else { 
+                typewriterElement.textContent = currentWord.substring(0, charIndex + 1); 
+                charIndex++; 
+            }
+            let typeSpeed = isDeleting ? 50 : 150;
+            if (!isDeleting && charIndex === currentWord.length) { 
+                typeSpeed = 2000; 
+                isDeleting = true; 
+            } else if (isDeleting && charIndex === 0) { 
+                isDeleting = false; 
+                wordIndex = (wordIndex + 1) % words.length; 
+                typeSpeed = 500; 
+            }
+            setTimeout(typeEffect, typeSpeed);
+        }
+        setTimeout(typeEffect, 1000);
+
+        // Анимация чисел
+        const animateNumbers = (element) => {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        };
+
+        // Intersection Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('stat-card')) {
+                        const num = entry.target.querySelector('.stat-number');
+                        if (num) animateNumbers(num);
+                    }
                 }
             });
-        }, observerOptions);
-        
-        document.querySelectorAll('.slide-in-left, .slide-in-right, .fade-in-up').forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
         });
+
+        // Курсор
+        const dot = document.querySelector('.cursor-dot');
+        const ring = document.querySelector('.cursor-ring');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                ring.style.left = e.clientX + 'px';
+                ring.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        // Темы
+        const themes = ['dark', 'light', 'fire', 'snow', 'night'];
+        const themeIcons = ['🌙', '☀️', '🔥', '❄️', '🌌'];
+        let currentThemeIndex = 0;
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            document.documentElement.setAttribute('data-theme', themes[currentThemeIndex]);
+            themeToggle.textContent = themeIcons[currentThemeIndex] + ' Тема';
+        });
+
+        // Scroll top
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
+            else scrollTopBtn.classList.remove('visible');
+        });
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Генератор брифа
+        function generateBrief() {
+            const name = document.getElementById('b-name').value || 'Аноним';
+            const type = document.getElementById('b-type').value;
+            const niche = document.getElementById('b-niche').value || 'Не указано';
+            const contact = document.getElementById('b-contact').value || 'Не указан';
+            const text = `Привет, ТехноЛис! 🦊\nМеня зовут: ${name}\nТариф: ${type}\nТематика: ${niche}\nКонтакт: ${contact}`;
+            document.getElementById('b-output').value = text;
+        }
+
+        function copyBrief() {
+            const output = document.getElementById('b-output');
+            if (!output.value) { alert('Сначала сгенерируй бриф!'); return; }
+            output.select();
+            document.execCommand('copy');
+            alert('Бриф скопирован! 🦊');
+        }
+
+        // Частицы
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const particles = [];
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2 + 1
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
     </script>
 </body>
 </html>
