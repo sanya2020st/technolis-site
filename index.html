@@ -62,10 +62,48 @@
             width: 50%; height: 3px; background: var(--accent); box-shadow: var(--glow); 
         }
         
+        /* НОВЫЕ АНИМАЦИИ */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
         .fade-in { opacity: 0; transform: translateY(50px); transition: opacity 0.8s, transform 0.8s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         
-        #hero { text-align: center; }
+        #hero { 
+            text-align: center; 
+            background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-primary));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
         #hero h1 { font-size: 4rem; margin-bottom: 20px; }
         #hero h1 span { 
             color: var(--accent); text-shadow: var(--glow); 
@@ -73,12 +111,6 @@
             background-size: 200% auto; 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; 
             animation: gradientShift 3s ease infinite; 
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-            100% { background-position: 0% center; }
         }
         
         .typewriter { 
@@ -178,21 +210,21 @@
     </section>
 
     <section id="stats">
-        <h2 class="section-title fade-in">Мои достижения</h2>
+        <h2 class="section-title slide-in-left">Мои достижения</h2>
         <div class="stats-grid">
-            <div class="stat-card fade-in">
+            <div class="stat-card slide-in-left" style="animation-delay: 0.1s;">
                 <div class="stat-number" data-target="10">0</div>
                 <div class="stat-label">Проектов завершено</div>
             </div>
-            <div class="stat-card fade-in">
+            <div class="stat-card slide-in-right" style="animation-delay: 0.2s;">
                 <div class="stat-number" data-target="50">0</div>
                 <div class="stat-label">Довольных клиентов</div>
             </div>
-            <div class="stat-card fade-in">
+            <div class="stat-card slide-in-left" style="animation-delay: 0.3s;">
                 <div class="stat-number" data-target="2">0</div>
                 <div class="stat-label">Года опыта</div>
             </div>
-            <div class="stat-card fade-in">
+            <div class="stat-card slide-in-right" style="animation-delay: 0.4s;">
                 <div class="stat-number" data-target="99">0</div>
                 <div class="stat-label">% качества</div>
             </div>
@@ -200,8 +232,8 @@
     </section>
 
     <section id="about">
-        <h2 class="section-title fade-in">Обо мне</h2>
-        <p class="fade-in" style="font-size: 1.2rem; max-width: 800px;">
+        <h2 class="section-title slide-in-left">Обо мне</h2>
+        <p class="slide-in-right" style="font-size: 1.2rem; max-width: 800px;">
             Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript. 
             Никаких конструкторов, только код. Каждый пиксель продуман, каждая анимация отточена. 
             Мне 11 лет, и я уже создал свой язык программирования FOXKOD и мод для Minecraft Snowy Deserts.
@@ -209,15 +241,15 @@
     </section>
 
     <section id="projects">
-        <h2 class="section-title fade-in">Мои работы</h2>
+        <h2 class="section-title slide-in-left">Мои работы</h2>
         <div class="grid">
-            <div class="card fade-in">
+            <div class="card slide-in-left" style="animation-delay: 0.1s;">
                 <h3>🦊 FOXKOD</h3>
                 <p>Язык программирования на русском языке. Мой пет-проект по разработке языка со полностью русским синтаксисом. Доказательство того, что кодить можно на любом языке!</p>
                 <br>
                 <a href="https://github.com/sanya2020st/FoxCode" target="_blank">Посмотреть →</a>
             </div>
-            <div class="card fade-in">
+            <div class="card slide-in-right" style="animation-delay: 0.2s;">
                 <h3>❄️ Snowy Deserts</h3>
                 <p>Глобальный мод для Minecraft. Добавляет в игру уникальные снежные пустыни, новых мобов и экзотические блоки. Тысячи игроков уже исследуют эти биомы.</p>
                 <br>
@@ -227,9 +259,9 @@
     </section>
 
     <section id="services">
-        <h2 class="section-title fade-in">Услуги и Тарифы</h2>
+        <h2 class="section-title slide-in-left">Услуги и Тарифы</h2>
         <div class="grid">
-            <div class="card fade-in">
+            <div class="card slide-in-left" style="animation-delay: 0.1s;">
                 <h3>💼 Веб-Мал (НР)</h3>
                 <p style="font-size: 2rem; color: var(--accent); font-weight: bold;">от 240₽</p>
                 <ul>
@@ -238,7 +270,7 @@
                     <li>Базовая анимация</li>
                 </ul>
             </div>
-            <div class="card fade-in">
+            <div class="card slide-in-right" style="animation-delay: 0.2s;">
                 <h3>🚀 Веб-Большой (Р)</h3>
                 <p style="font-size: 2rem; color: var(--accent); font-weight: bold;">от 1060₽</p>
                 <ul>
@@ -251,10 +283,10 @@
     </section>
 
     <section id="reviews">
-        <h2 class="section-title fade-in">Отзывы клиентов</h2>
-        <p class="fade-in" style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem;">Что говорят те, кто уже доверил мне свои проекты 🦊</p>
+        <h2 class="section-title slide-in-left">Отзывы клиентов</h2>
+        <p class="slide-in-right" style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem;">Что говорят те, кто уже доверил мне свои проекты 🦊</p>
         <div class="grid">
-            <div class="card fade-in review-card">
+            <div class="card slide-in-left review-card" style="animation-delay: 0.1s;">
                 <div class="review-header">
                     <div class="review-avatar">🦊</div>
                     <div>
@@ -267,7 +299,7 @@
             </div>
         </div>
 
-        <div class="brief-form fade-in" style="margin-top: 50px;">
+        <div class="brief-form slide-in-right" style="margin-top: 50px;">
             <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.5rem;">✍️ Оставить отзыв</h3>
             <label>Как тебя зовут?</label>
             <input type="text" id="r-name" placeholder="Твоё имя">
@@ -288,9 +320,9 @@
     </section>
 
     <section id="faq">
-        <h2 class="section-title fade-in">Частые вопросы</h2>
+        <h2 class="section-title slide-in-left">Частые вопросы</h2>
         <div class="faq-list">
-            <div class="faq-item fade-in">
+            <div class="faq-item slide-in-left" style="animation-delay: 0.1s;">
                 <div class="faq-question">
                     <span>Сколько времени занимает создание сайта?</span>
                     <span class="faq-icon">+</span>
@@ -299,7 +331,7 @@
                     <div class="faq-answer-content">Сроки зависят от сложности проекта. Простой лендинг — от 1 дня, многостраничный сайт — от 3-7 дней. Точные сроки обсуждаем после получения ТЗ.</div>
                 </div>
             </div>
-            <div class="faq-item fade-in">
+            <div class="faq-item slide-in-right" style="animation-delay: 0.2s;">
                 <div class="faq-question">
                     <span>Нужно ли мне самому покупать хостинг?</span>
                     <span class="faq-icon">+</span>
@@ -308,7 +340,7 @@
                     <div class="faq-answer-content">Да, хостинг и домен оплачиваются отдельно. Это твой цифровой дом, и он должен быть оформлен на тебя. Я лишь помогаю с настройкой и заливкой сайта.</div>
                 </div>
             </div>
-            <div class="faq-item fade-in">
+            <div class="faq-item slide-in-left" style="animation-delay: 0.3s;">
                 <div class="faq-question">
                     <span>Можно ли внести правки после завершения?</span>
                     <span class="faq-icon">+</span>
@@ -317,7 +349,7 @@
                     <div class="faq-answer-content">Конечно! В каждый тариф включено определенное количество правок. Если лимит исчерпан, каждая дополнительная правка стоит 20₽.</div>
                 </div>
             </div>
-            <div class="faq-item fade-in">
+            <div class="faq-item slide-in-right" style="animation-delay: 0.4s;">
                 <div class="faq-question">
                     <span>Как происходит оплата?</span>
                     <span class="faq-icon">+</span>
@@ -326,7 +358,7 @@
                     <div class="faq-answer-content">Предоплата 50% перед началом работ. Оставшиеся 50% — после того, как ты увидишь готовый результат и одобришь его.</div>
                 </div>
             </div>
-            <div class="faq-item fade-in">
+            <div class="faq-item slide-in-left" style="animation-delay: 0.5s;">
                 <div class="faq-question">
                     <span>Делаете ли вы сайты на Tilda или WordPress?</span>
                     <span class="faq-icon">+</span>
@@ -339,9 +371,9 @@
     </section>
 
     <section id="brief">
-        <h2 class="section-title fade-in">Сгенерировать Бриф</h2>
-        <p class="fade-in" style="margin-bottom: 20px; color: var(--text-secondary);">Ответь на вопросы, и я сформирую готовое ТЗ. Тебе останется только скопировать его и отправить мне в Max!</p>
-        <div class="brief-form fade-in">
+        <h2 class="section-title slide-in-left">Сгенерировать Бриф</h2>
+        <p class="slide-in-right" style="margin-bottom: 20px; color: var(--text-secondary);">Ответь на вопросы, и я сформирую готовое ТЗ. Тебе останется только скопировать его и отправить мне в Max!</p>
+        <div class="brief-form slide-in-left" style="animation-delay: 0.1s;">
             <label>1. Как к тебе обращаться?</label>
             <input type="text" id="b-name" placeholder="Твой ник или имя">
             <label>2. Какой тариф тебя интересует?</label>
@@ -379,9 +411,10 @@
     </footer>
 
     <script>
+        // Печатная машинка
         const typewriterElement = document.getElementById('typewriter');
         const words = ["будущего", "быстро", "красиво", "надёжно", "с душой", "на чистом коде"];
-        let wordIndex = 0; let charIndex = 0; let isDeleting = false;
+        let wordIndex = 0, charIndex = 0, isDeleting = false;
         
         function typeEffect() {
             const currentWord = words[wordIndex];
@@ -394,6 +427,7 @@
         }
         setTimeout(typeEffect, 1000);
 
+        // Анимация чисел
         const animateNumbers = (element) => {
             const target = parseInt(element.getAttribute('data-target'));
             const duration = 2000;
@@ -410,10 +444,12 @@
             }, 16);
         };
 
+        // Intersection Observer для анимаций
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    entry.target.style.animationPlayState = 'running';
                     if (entry.target.classList.contains('stat-card')) {
                         const num = entry.target.querySelector('.stat-number');
                         if (num) animateNumbers(num);
@@ -423,7 +459,14 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // Пауза анимаций slide-in до появления
+        document.querySelectorAll('.slide-in-left, .slide-in-right').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
 
+        // FAQ
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentElement;
@@ -433,6 +476,7 @@
             });
         });
 
+        // Курсор
         const dot = document.querySelector('.cursor-dot');
         const ring = document.querySelector('.cursor-ring');
         window.addEventListener('mousemove', (e) => {
@@ -444,6 +488,7 @@
             }, 50);
         });
 
+        // Темы
         const themes = ['dark', 'light', 'fire', 'snow', 'night'];
         const themeIcons = ['🌙', '☀️', '🔥', '❄️', '🌌'];
         let currentThemeIndex = 0;
@@ -454,6 +499,7 @@
             themeToggle.textContent = themeIcons[currentThemeIndex] + ' Тема';
         });
 
+        // Scroll top
         const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
@@ -461,6 +507,7 @@
         });
         scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+        // Генератор брифа
         function generateBrief() {
             const name = document.getElementById('b-name').value || 'Анонимный Лис';
             const type = document.getElementById('b-type').value;
@@ -483,6 +530,7 @@
             alert('Бриф скопирован! Открывай Max и отправляй мне. 🇷🇺');
         }
 
+        // Генератор отзывов
         function generateReview() {
             const name = document.getElementById('r-name').value || 'Аноним';
             const rating = document.getElementById('r-rating').value;
@@ -500,6 +548,7 @@
             alert('Отзыв скопирован! Отправляй в Max, а я добавлю его через админку! 🦊');
         }
 
+        // Частицы
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
