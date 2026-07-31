@@ -1,69 +1,364 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТехноЛис | Создание сайтов</title>
     <style>
-        :root {
-            --bg-primary: #0a0a0c;
-            --bg-secondary: #121216;
-            --bg-card: #1a1a20;
-            --text-primary: #f0f0f0;
-            --text-secondary: #a0a0a0;
-            --accent: #ff6b00;
-            --accent-light: #ff9500;
-            --border: rgba(255, 107, 0, 0.2);
+        :root { 
+            --bg-primary: #0a0a0c; 
+            --bg-secondary: #121216; 
+            --bg-card: rgba(26, 26, 32, 0.7); 
+            --text-primary: #f0f0f0; 
+            --text-secondary: #a0a0a0; 
+            --accent: #ff6b00; 
+            --accent-light: #ff9500; 
+            --border: rgba(255, 107, 0, 0.2); 
             --glow: 0 0 20px rgba(255, 107, 0, 0.3);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background-color: var(--bg-primary); 
+            color: var(--text-primary); 
+            line-height: 1.6; 
+            overflow-x: hidden;
         }
-
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
+        
+        /* АНИМАЦИИ ПОЯВЛЕНИЯ */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-
-        h1 {
-            font-size: 3rem;
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* HERO СЕКЦИЯ С ГРАДИЕНТОМ */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(-45deg, #0a0a0c, #1a0a0a, #0a1a2a, #1a1a0a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 40px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
             margin-bottom: 20px;
-            color: var(--accent);
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s linear infinite;
         }
-
-        p {
-            font-size: 1.2rem;
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
             color: var(--text-secondary);
             margin-bottom: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent);
+            animation: typewriter 3s steps(40) 1s forwards, blink 0.7s step-end infinite;
+            width: 0;
         }
-
+        
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        
+        /* GLASSMORPHISM КАРТОЧКИ */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 0, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(255, 107, 0, 0.3);
+        }
+        
+        /* КНОПКИ С ЭФФЕКТОМ */
         .btn {
             display: inline-block;
             padding: 15px 40px;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
             color: #fff;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.6);
+        }
+        
+        /* СЕКЦИИ */
+        section {
+            padding: 100px 10%;
+            min-height: 100vh;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 2px;
+        }
+        
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        /* ЭФФЕКТ ПЕЧАТНОЙ МАШИНКИ ДЛЯ ТЕКСТА */
+        .typewriter-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent);
+            animation: typewriter 2s steps(40) forwards, blink 0.7s step-end infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            section { padding: 60px 5%; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🦊 ТехноЛис</h1>
-        <p>Создание сайтов на чистом коде. Быстро, красиво, надёжно.</p>
-        <a href="#" class="btn">Обсудить проект</a>
-    </div>
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">🦊 ТехноЛис</h1>
+            <p class="hero-subtitle">Создание сайтов на чистом коде. Быстро, красиво, надёжно.</p>
+            <a href="#contact" class="btn">Обсудить проект</a>
+        </div>
+    </section>
+    
+    <!-- О СЕБЕ -->
+    <section id="about">
+        <h2 class="section-title slide-in-left">Обо мне</h2>
+        <div class="card slide-in-right" style="max-width: 800px; margin: 50px auto;">
+            <p style="font-size: 1.2rem; color: var(--text-secondary);">
+                Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript. 
+                Никаких конструкторов, только код. Каждый пиксель продуман, каждая анимация отточена.
+            </p>
+        </div>
+    </section>
+    
+    <!-- ПРОЕКТЫ -->
+    <section id="projects">
+        <h2 class="section-title slide-in-left">Мои работы</h2>
+        <div class="grid">
+            <div class="card slide-in-left" style="animation-delay: 0.1s;">
+                <h3 style="color: var(--accent); margin-bottom: 15px;">🦊 FOXKOD</h3>
+                <p style="color: var(--text-secondary);">Язык программирования на русском языке. Мой пет-проект по разработке языка со полностью русским синтаксисом.</p>
+                <br>
+                <a href="https://github.com/sanya2020st/FoxCode" target="_blank" class="btn" style="padding: 10px 25px; font-size: 0.9rem;">Посмотреть →</a>
+            </div>
+            <div class="card slide-in-right" style="animation-delay: 0.2s;">
+                <h3 style="color: var(--accent); margin-bottom: 15px;">❄️ Snowy Deserts</h3>
+                <p style="color: var(--text-secondary);">Глобальный мод для Minecraft. Добавляет в игру уникальные снежные пустыни, новых мобов и экзотические блоки.</p>
+                <br>
+                <a href="https://github.com/sanya2020st/Snowy-Deserts" target="_blank" class="btn" style="padding: 10px 25px; font-size: 0.9rem;">Посмотреть →</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- УСЛУГИ -->
+    <section id="services">
+        <h2 class="section-title slide-in-left">Услуги</h2>
+        <div class="grid">
+            <div class="card slide-in-left" style="animation-delay: 0.1s;">
+                <h3 style="color: var(--accent); margin-bottom: 15px;">💼 Веб-Мал</h3>
+                <p style="font-size: 2rem; color: var(--accent-light); font-weight: bold; margin-bottom: 15px;">от 240₽</p>
+                <ul style="color: var(--text-secondary); padding-left: 20px;">
+                    <li>Одностраничный сайт</li>
+                    <li>Адаптивный дизайн</li>
+                    <li>Базовая анимация</li>
+                </ul>
+            </div>
+            <div class="card slide-in-right" style="animation-delay: 0.2s;">
+                <h3 style="color: var(--accent); margin-bottom: 15px;">🚀 Веб-Большой</h3>
+                <p style="font-size: 2rem; color: var(--accent-light); font-weight: bold; margin-bottom: 15px;">от 760₽</p>
+                <ul style="color: var(--text-secondary); padding-left: 20px;">
+                    <li>Многостраничный сайт</li>
+                    <li>Админ-панель</li>
+                    <li>Продвинутые анимации</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- КОНТАКТЫ -->
+    <section id="contact">
+        <h2 class="section-title slide-in-left">Связаться со мной</h2>
+        <div class="card slide-in-right" style="max-width: 600px; margin: 50px auto; text-align: center;">
+            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px;">
+                Готов обсудить твой проект? Напиши мне!
+            </p>
+            <a href="#" class="btn">Написать в Max</a>
+        </div>
+    </section>
+    
+    <footer style="padding: 40px; text-align: center; border-top: 1px solid var(--border);">
+        <p style="color: var(--text-secondary);">© 2026 ТехноЛис. Сделано с 🦊 и ❤️</p>
+    </footer>
+    
+    <script>
+        // Intersection Observer для анимаций при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.slide-in-left, .slide-in-right, .fade-in-up').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
