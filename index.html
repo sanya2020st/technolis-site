@@ -10,143 +10,52 @@
         [data-theme="fire"] { --bg-primary: #1a0a0a; --bg-secondary: #2a1010; --bg-card: rgba(58, 21, 21, 0.7); --text-primary: #fff0f0; --text-secondary: #ffaaaa; --accent: #ff3300; --accent-light: #ff5500; --border: rgba(255, 51, 0, 0.3); --glow: 0 0 20px rgba(255, 51, 0, 0.4); }
         [data-theme="snow"] { --bg-primary: #0a1a2a; --bg-secondary: #102030; --bg-card: rgba(21, 37, 53, 0.7); --text-primary: #f0f8ff; --text-secondary: #aaccdd; --accent: #00aaff; --accent-light: #55ccff; --border: rgba(0, 170, 255, 0.2); --glow: 0 0 20px rgba(0, 170, 255, 0.3); }
         [data-theme="night"] { --bg-primary: #050510; --bg-secondary: #0a0a1a; --bg-card: rgba(15, 15, 37, 0.7); --text-primary: #e0e0ff; --text-secondary: #8888aa; --accent: #aa00ff; --accent-light: #cc55ff; --border: rgba(170, 0, 255, 0.2); --glow: 0 0 20px rgba(170, 0, 255, 0.3); }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        
-        body { 
-            font-family: 'Segoe UI', system-ui, sans-serif; 
-            background-color: var(--bg-primary); 
-            color: var(--text-primary); 
-            line-height: 1.6; 
-            overflow-x: hidden; 
-            cursor: none; 
-        }
-        
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; cursor: none; }
         a { color: var(--accent); text-decoration: none; transition: 0.3s; }
         a:hover { color: var(--accent-light); text-shadow: var(--glow); }
-        
         .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); }
         .cursor-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; transition: width 0.2s, height 0.2s; }
         .cursor-ring { width: 40px; height: 40px; border: 2px solid var(--accent); border-radius: 50%; transition: width 0.3s, height 0.3s, border-color 0.3s; }
         .cursor-hover .cursor-dot { width: 0; height: 0; }
         .cursor-hover .cursor-ring { width: 60px; height: 60px; border-color: var(--accent-light); background: rgba(255, 107, 0, 0.1); }
-        
         #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
-        
-        header { 
-            position: fixed; top: 0; width: 100%; padding: 20px 5%; 
-            display: flex; justify-content: space-between; align-items: center; 
-            background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(10px); 
-            border-bottom: 1px solid var(--border); z-index: 100; 
-        }
+        header { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
         [data-theme="light"] header { background: rgba(244, 244, 245, 0.8); }
-        
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--accent); letter-spacing: 2px; cursor: none; }
         nav ul { display: flex; gap: 20px; list-style: none; }
         nav a { color: var(--text-primary); font-weight: 500; }
-        
-        .theme-toggle { 
-            background: none; border: 2px solid var(--accent); color: var(--accent); 
-            padding: 8px 15px; border-radius: 20px; cursor: none; transition: 0.3s; 
-        }
+        .theme-toggle { background: none; border: 2px solid var(--accent); color: var(--accent); padding: 8px 15px; border-radius: 20px; cursor: none; transition: 0.3s; }
         .theme-toggle:hover { background: var(--accent); color: var(--bg-primary); }
-        
         section { padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-        
-        .section-title { 
-            font-size: 2.5rem; margin-bottom: 40px; position: relative; display: inline-block; 
-        }
-        .section-title::after { 
-            content: ''; position: absolute; bottom: -10px; left: 0; 
-            width: 50%; height: 3px; background: var(--accent); box-shadow: var(--glow); 
-        }
-        
-        /* НОВЫЕ АНИМАЦИИ */
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-100px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(100px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .slide-in-left {
-            opacity: 0;
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-        
-        .slide-in-right {
-            opacity: 0;
-            animation: slideInRight 0.8s ease-out forwards;
-        }
-        
+        .section-title { font-size: 2.5rem; margin-bottom: 40px; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50%; height: 3px; background: var(--accent); box-shadow: var(--glow); }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes blink { from, to { border-color: transparent; } 50% { border-color: var(--accent); } }
+        .slide-in-left { opacity: 0; animation: slideInLeft 0.8s ease-out forwards; }
+        .slide-in-right { opacity: 0; animation: slideInRight 0.8s ease-out forwards; }
         .fade-in { opacity: 0; transform: translateY(50px); transition: opacity 0.8s, transform 0.8s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        
-        #hero { 
-            text-align: center; 
-            background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-primary));
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
+        #hero { text-align: center; background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-primary)); background-size: 400% 400%; animation: gradientShift 15s ease infinite; }
         #hero h1 { font-size: 4rem; margin-bottom: 20px; }
-        #hero h1 span { 
-            color: var(--accent); text-shadow: var(--glow); 
-            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent)); 
-            background-size: 200% auto; 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; 
-            animation: gradientShift 3s ease infinite; 
-        }
-        
-        .typewriter { 
-            display: inline-block; border-right: 3px solid var(--accent); 
-            animation: blink 0.7s step-end infinite; 
-        }
-        
-        @keyframes blink { 
-            from, to { border-color: transparent; } 
-            50% { border-color: var(--accent); } 
-        }
-        
+        #hero h1 span { color: var(--accent); text-shadow: var(--glow); background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 3s ease infinite; }
+        .typewriter { display: inline-block; border-right: 3px solid var(--accent); animation: blink 0.7s step-end infinite; }
         #hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px; }
-        
-        .btn-primary { 
-            display: inline-block; padding: 15px 40px; background: var(--accent); color: #fff; 
-            border-radius: 30px; font-weight: bold; box-shadow: var(--glow); transition: 0.3s; cursor: none; border: none; font-size: 1rem; 
-        }
+        .btn-primary { display: inline-block; padding: 15px 40px; background: var(--accent); color: #fff; border-radius: 30px; font-weight: bold; box-shadow: var(--glow); transition: 0.3s; cursor: none; border: none; font-size: 1rem; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 107, 0, 0.5); }
-        
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 50px 0; }
         .stat-card { text-align: center; padding: 30px; background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 15px; }
         .stat-number { font-size: 3rem; font-weight: bold; color: var(--accent); margin-bottom: 10px; }
         .stat-label { color: var(--text-secondary); font-size: 1.1rem; }
-        
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { 
-            background: var(--bg-card); backdrop-filter: blur(10px); 
-            border: 1px solid var(--border); border-radius: 15px; padding: 30px; 
-            transition: 0.4s; position: relative; overflow: hidden; 
-        }
+        .card { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 15px; padding: 30px; transition: 0.4s; position: relative; overflow: hidden; }
         .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: var(--glow); }
         .card h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.5rem; }
         .card ul { padding-left: 20px; color: var(--text-secondary); }
         .card ul li { margin-bottom: 8px; }
-        
         .faq-item { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 15px; overflow: hidden; }
         .faq-question { padding: 20px; cursor: none; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: var(--text-primary); }
         .faq-question:hover { background: rgba(255, 107, 0, 0.05); }
@@ -155,32 +64,22 @@
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-secondary); }
         .faq-item.active .faq-answer { max-height: 500px; }
         .faq-answer-content { padding: 0 20px 20px; }
-        
         .review-card { display: flex; flex-direction: column; gap: 15px; }
         .review-header { display: flex; align-items: center; gap: 15px; }
         .review-avatar { width: 50px; height: 50px; background: var(--bg-primary); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
         .review-stars { font-size: 0.9rem; letter-spacing: 2px; }
         .review-text { color: var(--text-secondary); font-style: italic; line-height: 1.7; flex-grow: 1; }
         .review-date { color: var(--accent); font-size: 0.85rem; font-weight: bold; text-align: right; }
-        
         .brief-form { background: var(--bg-card); backdrop-filter: blur(10px); padding: 40px; border-radius: 15px; border: 1px solid var(--border); }
         .brief-form label { display: block; margin-bottom: 5px; color: var(--text-secondary); font-weight: bold; }
         .brief-form input, .brief-form select, .brief-form textarea { width: 100%; padding: 12px; margin-bottom: 20px; background: var(--bg-primary); border: 1px solid var(--border); color: var(--text-primary); border-radius: 8px; font-size: 1rem; }
         .brief-form textarea { min-height: 80px; resize: vertical; }
         .brief-output { width: 100%; min-height: 250px; padding: 15px; background: var(--bg-primary); border: 1px dashed var(--accent); color: var(--accent); font-family: monospace; border-radius: 8px; margin-top: 20px; font-size: 0.95rem; }
-        
         .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--accent); color: #fff; border: none; border-radius: 50%; font-size: 1.5rem; cursor: none; opacity: 0; visibility: hidden; transition: 0.3s; z-index: 1000; box-shadow: var(--glow); }
         .scroll-top.visible { opacity: 1; visibility: visible; }
-        
-        @media (max-width: 768px) { 
-            body { cursor: auto; } 
-            .cursor-dot, .cursor-ring { display: none; } 
-            nav ul { display: none; } 
-            #hero h1 { font-size: 2.5rem; } 
-            section { padding: 80px 5%; } 
-            .grid { grid-template-columns: 1fr; } 
-            .stats-grid { grid-template-columns: 1fr; } 
-        }
+        .phone-link { font-size: 1.5rem; font-weight: bold; color: var(--accent); text-decoration: none; display: inline-block; margin: 10px 0; }
+        .phone-link:hover { color: var(--accent-light); text-shadow: var(--glow); }
+        @media (max-width: 768px) { body { cursor: auto; } .cursor-dot, .cursor-ring { display: none; } nav ul { display: none; } #hero h1 { font-size: 2.5rem; } section { padding: 80px 5%; } .grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -204,58 +103,29 @@
     </header>
 
     <section id="hero">
-        <h1>🦊 ТехноЛис <span class="typewriter" id="typewriter"></span></h1>
-        <p class="fade-in">Создание сайтов на чистом коде. Быстро, красиво, надёжно. Пацан умеет и могёт!</p>
+        <h1 id="heroTitle">🦊 ТехноЛис <span class="typewriter" id="typewriter"></span></h1>
+        <p class="fade-in" id="heroSubtitle">Создание сайтов на чистом коде. Быстро, красиво, надёжно. Пацан умеет и могёт!</p>
         <a href="#brief" class="btn-primary fade-in">Обсудить проект</a>
     </section>
 
     <section id="stats">
         <h2 class="section-title slide-in-left">Мои достижения</h2>
         <div class="stats-grid">
-            <div class="stat-card slide-in-left" style="animation-delay: 0.1s;">
-                <div class="stat-number" data-target="10">0</div>
-                <div class="stat-label">Проектов завершено</div>
-            </div>
-            <div class="stat-card slide-in-right" style="animation-delay: 0.2s;">
-                <div class="stat-number" data-target="50">0</div>
-                <div class="stat-label">Довольных клиентов</div>
-            </div>
-            <div class="stat-card slide-in-left" style="animation-delay: 0.3s;">
-                <div class="stat-number" data-target="2">0</div>
-                <div class="stat-label">Года опыта</div>
-            </div>
-            <div class="stat-card slide-in-right" style="animation-delay: 0.4s;">
-                <div class="stat-number" data-target="99">0</div>
-                <div class="stat-label">% качества</div>
-            </div>
+            <div class="stat-card slide-in-left" style="animation-delay: 0.1s;"><div class="stat-number" data-target="10">0</div><div class="stat-label">Проектов завершено</div></div>
+            <div class="stat-card slide-in-right" style="animation-delay: 0.2s;"><div class="stat-number" data-target="50">0</div><div class="stat-label">Довольных клиентов</div></div>
+            <div class="stat-card slide-in-left" style="animation-delay: 0.3s;"><div class="stat-number" data-target="2">0</div><div class="stat-label">Года опыта</div></div>
+            <div class="stat-card slide-in-right" style="animation-delay: 0.4s;"><div class="stat-number" data-target="99">0</div><div class="stat-label">% качества</div></div>
         </div>
     </section>
 
     <section id="about">
         <h2 class="section-title slide-in-left">Обо мне</h2>
-        <p class="slide-in-right" style="font-size: 1.2rem; max-width: 800px;">
-            Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript. 
-            Никаких конструкторов, только код. Каждый пиксель продуман, каждая анимация отточена. 
-            Мне 11 лет, и я уже создал свой язык программирования FOXKOD и мод для Minecraft Snowy Deserts.
-        </p>
+        <p class="slide-in-right" id="aboutText" style="font-size: 1.2rem; max-width: 800px;">Загрузка...</p>
     </section>
 
     <section id="projects">
         <h2 class="section-title slide-in-left">Мои работы</h2>
-        <div class="grid">
-            <div class="card slide-in-left" style="animation-delay: 0.1s;">
-                <h3>🦊 FOXKOD</h3>
-                <p>Язык программирования на русском языке. Мой пет-проект по разработке языка со полностью русским синтаксисом. Доказательство того, что кодить можно на любом языке!</p>
-                <br>
-                <a href="https://github.com/sanya2020st/FoxCode" target="_blank">Посмотреть →</a>
-            </div>
-            <div class="card slide-in-right" style="animation-delay: 0.2s;">
-                <h3>❄️ Snowy Deserts</h3>
-                <p>Глобальный мод для Minecraft. Добавляет в игру уникальные снежные пустыни, новых мобов и экзотические блоки. Тысячи игроков уже исследуют эти биомы.</p>
-                <br>
-                <a href="https://github.com/sanya2020st/Snowy-Deserts" target="_blank">Посмотреть →</a>
-            </div>
-        </div>
+        <div class="grid" id="projectsGrid"></div>
     </section>
 
     <section id="services">
@@ -264,20 +134,12 @@
             <div class="card slide-in-left" style="animation-delay: 0.1s;">
                 <h3>💼 Веб-Мал (НР)</h3>
                 <p style="font-size: 2rem; color: var(--accent); font-weight: bold;">от 240₽</p>
-                <ul>
-                    <li>Одностраничный сайт</li>
-                    <li>Адаптивный дизайн</li>
-                    <li>Базовая анимация</li>
-                </ul>
+                <ul><li>Одностраничный сайт</li><li>Адаптивный дизайн</li><li>Базовая анимация</li></ul>
             </div>
             <div class="card slide-in-right" style="animation-delay: 0.2s;">
                 <h3>🚀 Веб-Большой (Р)</h3>
                 <p style="font-size: 2rem; color: var(--accent); font-weight: bold;">от 1060₽</p>
-                <ul>
-                    <li>Многостраничный сайт</li>
-                    <li>Админ-панель</li>
-                    <li>Продвинутые анимации</li>
-                </ul>
+                <ul><li>Многостраничный сайт</li><li>Админ-панель</li><li>Продвинутые анимации</li></ul>
             </div>
         </div>
     </section>
@@ -285,20 +147,7 @@
     <section id="reviews">
         <h2 class="section-title slide-in-left">Отзывы клиентов</h2>
         <p class="slide-in-right" style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem;">Что говорят те, кто уже доверил мне свои проекты 🦊</p>
-        <div class="grid">
-            <div class="card slide-in-left review-card" style="animation-delay: 0.1s;">
-                <div class="review-header">
-                    <div class="review-avatar">🦊</div>
-                    <div>
-                        <h4>ТехноЛис</h4>
-                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    </div>
-                </div>
-                <p class="review-text">"Вот так будет выглядеть твой отзыв!"</p>
-                <div class="review-date">Март 2025</div>
-            </div>
-        </div>
-
+        <div class="grid" id="reviewsGrid"></div>
         <div class="brief-form slide-in-right" style="margin-top: 50px;">
             <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.5rem;">✍️ Оставить отзыв</h3>
             <label>Как тебя зовут?</label>
@@ -315,271 +164,255 @@
             <textarea id="r-text" placeholder="Расскажи, как тебе сайт..." style="min-height: 120px;"></textarea>
             <button class="btn-primary" onclick="generateReview()" style="width: 100%;">🦊 Сгенерировать текст</button>
             <textarea class="brief-output" id="r-output" readonly placeholder="Здесь появится текст..." style="min-height: 120px;"></textarea>
-            <button class="btn-primary" onclick="copyReview()" style="width: 100%; margin-top: 10px; background: var(--bg-card); color: var(--accent); border: 1px solid var(--accent);">📋 Скопировать</button>
+            <button class="btn-primary" onclick="copyText('r-output')" style="width: 100%; margin-top: 10px; background: var(--bg-card); color: var(--accent); border: 1px solid var(--accent);">📋 Скопировать</button>
         </div>
     </section>
 
     <section id="faq">
         <h2 class="section-title slide-in-left">Частые вопросы</h2>
-        <div class="faq-list">
-            <div class="faq-item slide-in-left" style="animation-delay: 0.1s;">
-                <div class="faq-question">
-                    <span>Сколько времени занимает создание сайта?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">Сроки зависят от сложности проекта. Простой лендинг — от 1 дня, многостраничный сайт — от 3-7 дней. Точные сроки обсуждаем после получения ТЗ.</div>
-                </div>
-            </div>
-            <div class="faq-item slide-in-right" style="animation-delay: 0.2s;">
-                <div class="faq-question">
-                    <span>Нужно ли мне самому покупать хостинг?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">Да, хостинг и домен оплачиваются отдельно. Это твой цифровой дом, и он должен быть оформлен на тебя. Я лишь помогаю с настройкой и заливкой сайта.</div>
-                </div>
-            </div>
-            <div class="faq-item slide-in-left" style="animation-delay: 0.3s;">
-                <div class="faq-question">
-                    <span>Можно ли внести правки после завершения?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">Конечно! В каждый тариф включено определенное количество правок. Если лимит исчерпан, каждая дополнительная правка стоит 20₽.</div>
-                </div>
-            </div>
-            <div class="faq-item slide-in-right" style="animation-delay: 0.4s;">
-                <div class="faq-question">
-                    <span>Как происходит оплата?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">Предоплата 50% перед началом работ. Оставшиеся 50% — после того, как ты увидишь готовый результат и одобришь его.</div>
-                </div>
-            </div>
-            <div class="faq-item slide-in-left" style="animation-delay: 0.5s;">
-                <div class="faq-question">
-                    <span>Делаете ли вы сайты на Tilda или WordPress?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">Нет, я работаю только с чистым кодом (HTML/CSS/JS). Это дает максимальную производительность, уникальность и полный контроль над каждым пикселем.</div>
-                </div>
-            </div>
-        </div>
+        <div class="faq-list" id="faqList"></div>
     </section>
 
     <section id="brief">
         <h2 class="section-title slide-in-left">Сгенерировать Бриф</h2>
-        <p class="slide-in-right" style="margin-bottom: 20px; color: var(--text-secondary);">Ответь на вопросы, и я сформирую готовое ТЗ. Тебе останется только скопировать его и отправить мне в Max!</p>
+        <p class="slide-in-right" style="margin-bottom: 20px; color: var(--text-secondary);">Ответь на вопросы, и я сформирую готовое ТЗ!</p>
         <div class="brief-form slide-in-left" style="animation-delay: 0.1s;">
-            <label>1. Как к тебе обращаться?</label>
-            <input type="text" id="b-name" placeholder="Твой ник или имя">
-            <label>2. Какой тариф тебя интересует?</label>
+            <label>1. Как к тебе обращаться?</label><input type="text" id="b-name" placeholder="Твой ник или имя">
+            <label>2. Какой тариф?</label>
             <select id="b-type">
-                <option value="Веб-Мал (Не Рекламный)">Веб-Мал (НР) - от 240₽</option>
-                <option value="Веб-Мал (Рекламный)">Веб-Мал (Р) - от 320₽</option>
+                <option value="Веб-Мал (НР)">Веб-Мал (НР) - от 240₽</option>
+                <option value="Веб-Мал (Р)">Веб-Мал (Р) - от 320₽</option>
                 <option value="Веб-Средний (НР)">Веб-Средний (НР) - от 320₽</option>
                 <option value="Веб-Средний (Р)">Веб-Средний (Р) - от 560₽</option>
                 <option value="Веб-Большой (НР)">Веб-Большой (НР) - от 760₽</option>
                 <option value="Веб-Большой (Р)">Веб-Большой (Р) - от 1060₽</option>
             </select>
-            <label>3. О чем будет сайт? (Ниша / Тематика)</label>
-            <textarea id="b-niche" placeholder="Например: Сайт-визитка для автосервиса или портфолио фотографа..."></textarea>
-            <label>4. Кто твоя целевая аудитория?</label>
-            <input type="text" id="b-audience" placeholder="Например: Молодежь 18-25, или владельцы бизнеса...">
-            <label>5. Главная цель сайта?</label>
-            <input type="text" id="b-goal" placeholder="Например: Продажи, сбор заявок, просто имидж...">
-            <label>6. Есть ли примеры сайтов, которые тебе нравятся?</label>
-            <input type="text" id="b-refs" placeholder="Ссылки через запятую (или оставь пустым)">
-            <label>7. Предпочтения по стилю/цветам?</label>
-            <input type="text" id="b-style" placeholder="Например: Строгий черно-белый, или яркий оранжевый...">
-            <label>8. Желаемые сроки?</label>
-            <input type="text" id="b-deadline" placeholder="Например: К концу месяца, или не горит...">
-            <label>9. Твой контакт для связи (Ник в Max или почта)</label>
-            <input type="text" id="b-contact" placeholder="@твой_ник_в_max">
-            <button class="btn-primary" onclick="generateBrief()" style="width: 100%; margin-top: 10px;">🦊 Сгенерировать идеальное ТЗ</button>
-            <label style="margin-top: 30px;">Готовый текст для отправки ТехноЛису:</label>
-            <textarea class="brief-output" id="b-output" readonly placeholder="Здесь появится твой бриф..."></textarea>
-            <button class="btn-primary" onclick="copyBrief()" style="width: 100%; margin-top: 10px; background: var(--bg-card); color: var(--accent); border: 1px solid var(--accent);">📋 Скопировать и пойти в Max</button>
+            <label>3. О чем будет сайт?</label><textarea id="b-niche" placeholder="Тематика..."></textarea>
+            <label>4. Целевая аудитория?</label><input type="text" id="b-audience" placeholder="Молодежь 18-25...">
+            <label>5. Главная цель?</label><input type="text" id="b-goal" placeholder="Продажи, имидж...">
+            <label>6. Референсы?</label><input type="text" id="b-refs" placeholder="Ссылки через запятую">
+            <label>7. Стиль/цвета?</label><input type="text" id="b-style" placeholder="Черно-белый, оранжевый...">
+            <label>8. Сроки?</label><input type="text" id="b-deadline" placeholder="К концу месяца...">
+            <label>9. Контакт для связи</label><input type="text" id="b-contact" placeholder="@ник_в_max">
+            <button class="btn-primary" onclick="generateBrief()" style="width: 100%; margin-top: 10px;">🦊 Сгенерировать ТЗ</button>
+            <textarea class="brief-output" id="b-output" readonly placeholder="Здесь появится бриф..."></textarea>
+            <button class="btn-primary" onclick="copyText('b-output')" style="width: 100%; margin-top: 10px; background: var(--bg-card); color: var(--accent); border: 1px solid var(--accent);">📋 Скопировать</button>
         </div>
     </section>
 
     <footer style="padding: 50px 10%; text-align: center; border-top: 1px solid var(--border);">
-        <p style="color: var(--text-secondary);">© 2026 ТехноЛис. Сделано с 🦊 и ❤️</p>
+        <h2 class="fade-in" style="color: var(--accent); margin-bottom: 20px;">Готов захватывать мир?</h2>
+        <p class="fade-in" style="color: var(--text-secondary); margin-bottom: 20px;">Свяжись со мной напрямую:</p>
+        <a href="tel:+79991234567" class="phone-link fade-in" id="phoneLink">📞 +7 (999) 123-45-67</a>
+        <p style="margin-top: 40px; font-size: 0.9rem; color: var(--text-secondary);">© 2026 ТехноЛис. Сделано с 🦊 и ❤️</p>
     </footer>
 
     <script>
-        // Печатная машинка
-        const typewriterElement = document.getElementById('typewriter');
-        const words = ["будущего", "быстро", "красиво", "надёжно", "с душой", "на чистом коде"];
-        let wordIndex = 0, charIndex = 0, isDeleting = false;
-        
-        function typeEffect() {
-            const currentWord = words[wordIndex];
-            if (isDeleting) { typewriterElement.textContent = currentWord.substring(0, charIndex - 1); charIndex--; } 
-            else { typewriterElement.textContent = currentWord.substring(0, charIndex + 1); charIndex++; }
-            let typeSpeed = isDeleting ? 50 : 150;
-            if (!isDeleting && charIndex === currentWord.length) { typeSpeed = 2000; isDeleting = true; } 
-            else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; typeSpeed = 500; }
-            setTimeout(typeEffect, typeSpeed);
-        }
-        setTimeout(typeEffect, 1000);
+        // === ЗАГРУЗКА ДАННЫХ ИЗ JSON ===
+        async function loadSiteData() {
+            try {
+                const res = await fetch('_data/site.json?t=' + Date.now());
+                const data = await res.json();
 
-        // Анимация чисел
-        const animateNumbers = (element) => {
-            const target = parseInt(element.getAttribute('data-target'));
-            const duration = 2000;
-            const step = target / (duration / 16);
+                // Настройки
+                if (data.settings) {
+                    document.getElementById('heroTitle').innerHTML = data.settings.hero_title + ' <span class="typewriter" id="typewriter"></span>';
+                    document.getElementById('heroSubtitle').textContent = data.settings.hero_subtitle + ' Пацан умеет и могёт!';
+                    document.getElementById('aboutText').textContent = data.settings.about_text;
+                    if (data.settings.phone) {
+                        const clean = data.settings.phone.replace(/[^0-9+]/g, '');
+                        document.getElementById('phoneLink').href = 'tel:' + clean;
+                        document.getElementById('phoneLink').textContent = '📞 ' + data.settings.phone;
+                    }
+                    setTimeout(typeEffect, 1000);
+                }
+
+                // Проекты
+                if (data.projects && data.projects.length > 0) {
+                    const grid = document.getElementById('projectsGrid');
+                    grid.innerHTML = data.projects.sort((a, b) => a.order - b.order).map((p, i) => `
+                        <div class="card ${i % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}" style="animation-delay: ${i * 0.1}s;">
+                            <h3>${p.icon} ${p.title}</h3>
+                            <p>${p.description}</p><br>
+                            <a href="${p.link}" target="_blank">Посмотреть →</a>
+                        </div>
+                    `).join('');
+                }
+
+                // Отзывы
+                if (data.reviews && data.reviews.length > 0) {
+                    const grid = document.getElementById('reviewsGrid');
+                    grid.innerHTML = data.reviews.map((r, i) => `
+                        <div class="card ${i % 2 === 0 ? 'slide-in-left' : 'slide-in-right'} review-card" style="animation-delay: ${i * 0.1}s;">
+                            <div class="review-header">
+                                <div class="review-avatar">${r.avatar}</div>
+                                <div><h4>${r.name}</h4><div class="review-stars">${'⭐'.repeat(r.rating)}</div></div>
+                            </div>
+                            <p class="review-text">"${r.text}"</p>
+                            <div class="review-date">${r.date}</div>
+                        </div>
+                    `).join('');
+                }
+
+                // FAQ
+                if (data.faq && data.faq.length > 0) {
+                    const list = document.getElementById('faqList');
+                    list.innerHTML = data.faq.sort((a, b) => a.order - b.order).map((f, i) => `
+                        <div class="faq-item ${i % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}" style="animation-delay: ${i * 0.1}s;">
+                            <div class="faq-question"><span>${f.question}</span><span class="faq-icon">+</span></div>
+                            <div class="faq-answer"><div class="faq-answer-content">${f.answer}</div></div>
+                        </div>
+                    `).join('');
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.addEventListener('click', () => {
+                            const item = q.parentElement;
+                            const isActive = item.classList.contains('active');
+                            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                            if (!isActive) item.classList.add('active');
+                        });
+                    });
+                }
+
+                initObservers();
+            } catch (e) {
+                console.log('Данные не загружены, используем стандартные:', e);
+                document.getElementById('aboutText').textContent = 'Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript.';
+                setTimeout(typeEffect, 1000);
+                initObservers();
+            }
+        }
+
+        // === КОПИРОВАНИЕ (РАБОТАЮЩЕЕ!) ===
+        async function copyText(elementId) {
+            const text = document.getElementById(elementId).value;
+            if (!text) { alert('Сначала сгенерируй текст! 🦊'); return; }
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('✅ Скопировано!');
+            } catch {
+                const el = document.getElementById(elementId);
+                el.select();
+                document.execCommand('copy');
+                alert('✅ Скопировано!');
+            }
+        }
+
+        // === ПЕЧАТНАЯ МАШИНКА ===
+        function typeEffect() {
+            const el = document.getElementById('typewriter');
+            if (!el) return;
+            const words = ["будущего", "быстро", "красиво", "надёжно", "с душой", "на чистом коде"];
+            let wordIndex = 0, charIndex = 0, isDeleting = false;
+            function type() {
+                const word = words[wordIndex];
+                if (isDeleting) { el.textContent = word.substring(0, charIndex - 1); charIndex--; }
+                else { el.textContent = word.substring(0, charIndex + 1); charIndex++; }
+                let speed = isDeleting ? 50 : 150;
+                if (!isDeleting && charIndex === word.length) { speed = 2000; isDeleting = true; }
+                else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; speed = 500; }
+                setTimeout(type, speed);
+            }
+            type();
+        }
+
+        // === АНИМАЦИЯ ЧИСЕЛ ===
+        function animateNumbers(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            const step = target / 125;
             let current = 0;
             const timer = setInterval(() => {
                 current += step;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
+                if (current >= target) { el.textContent = target; clearInterval(timer); }
+                else el.textContent = Math.floor(current);
             }, 16);
-        };
+        }
 
-        // Intersection Observer для анимаций
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    entry.target.style.animationPlayState = 'running';
-                    if (entry.target.classList.contains('stat-card')) {
-                        const num = entry.target.querySelector('.stat-number');
-                        if (num) animateNumbers(num);
+        // === OBSERVER ===
+        function initObservers() {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        entry.target.style.animationPlayState = 'running';
+                        if (entry.target.classList.contains('stat-card')) {
+                            const num = entry.target.querySelector('.stat-number');
+                            if (num) animateNumbers(num);
+                        }
                     }
-                }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+                if (el.classList.contains('slide-in-left') || el.classList.contains('slide-in-right')) el.style.animationPlayState = 'paused';
+                obs.observe(el);
             });
-        }, { threshold: 0.1 });
+        }
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        
-        // Пауза анимаций slide-in до появления
-        document.querySelectorAll('.slide-in-left, .slide-in-right').forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
-        });
-
-        // FAQ
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                const isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                if (!isActive) { item.classList.add('active'); }
-            });
-        });
-
-        // Курсор
-        const dot = document.querySelector('.cursor-dot');
-        const ring = document.querySelector('.cursor-ring');
-        window.addEventListener('mousemove', (e) => {
-            dot.style.left = e.clientX + 'px';
-            dot.style.top = e.clientY + 'px';
-            setTimeout(() => {
-                ring.style.left = e.clientX + 'px';
-                ring.style.top = e.clientY + 'px';
-            }, 50);
-        });
-
-        // Темы
-        const themes = ['dark', 'light', 'fire', 'snow', 'night'];
-        const themeIcons = ['🌙', '☀️', '🔥', '❄️', '🌌'];
-        let currentThemeIndex = 0;
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            document.documentElement.setAttribute('data-theme', themes[currentThemeIndex]);
-            themeToggle.textContent = themeIcons[currentThemeIndex] + ' Тема';
-        });
-
-        // Scroll top
-        const scrollTopBtn = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
-            else scrollTopBtn.classList.remove('visible');
-        });
-        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Генератор брифа
+        // === ГЕНЕРАТОРЫ ===
         function generateBrief() {
-            const name = document.getElementById('b-name').value || 'Анонимный Лис';
-            const type = document.getElementById('b-type').value;
-            const niche = document.getElementById('b-niche').value || 'Не указано';
-            const audience = document.getElementById('b-audience').value || 'Не указано';
-            const goal = document.getElementById('b-goal').value || 'Не указано';
-            const refs = document.getElementById('b-refs').value || 'Нет референсов';
-            const style = document.getElementById('b-style').value || 'На усмотрение ТехноЛиса';
-            const deadline = document.getElementById('b-deadline').value || 'Не горит / Обсудим';
-            const contact = document.getElementById('b-contact').value || 'Не указан';
-            const text = `Привет, ТехноЛис! 🦊 Хочу заказать сайт.\nМеня зовут: ${name}\nИнтересующий тариф: ${type}\n\nО проекте:\nТематика: ${niche}\nЦелевая аудитория: ${audience}\nГлавная цель сайта: ${goal}\n\nВизуал и Референсы:\nПримеры сайтов: ${refs}\nПредпочтения по стилю: ${style}\n\nСроки: ${deadline}\n\nМой контакт для связи в Max: ${contact}\n\nЖду твоего ответа по деталям!`;
-            document.getElementById('b-output').value = text;
+            const n = document.getElementById('b-name').value || 'Аноним';
+            const t = document.getElementById('b-type').value;
+            const ni = document.getElementById('b-niche').value || 'Не указано';
+            const a = document.getElementById('b-audience').value || 'Не указано';
+            const g = document.getElementById('b-goal').value || 'Не указано';
+            const r = document.getElementById('b-refs').value || 'Нет';
+            const s = document.getElementById('b-style').value || 'На усмотрение';
+            const d = document.getElementById('b-deadline').value || 'Обсудим';
+            const c = document.getElementById('b-contact').value || 'Не указан';
+            document.getElementById('b-output').value = `Привет, ТехноЛис! 🦊\nМеня зовут: ${n}\nТариф: ${t}\nТематика: ${ni}\nАудитория: ${a}\nЦель: ${g}\nРеференсы: ${r}\nСтиль: ${s}\nСроки: ${d}\nКонтакт: ${c}`;
         }
 
-        function copyBrief() {
-            const output = document.getElementById('b-output');
-            if(!output.value) { alert('Сначала сгенерируй бриф! 🦊'); return; }
-            output.select();
-            document.execCommand('copy');
-            alert('Бриф скопирован! Открывай Max и отправляй мне. 🇷🇺');
-        }
-
-        // Генератор отзывов
         function generateReview() {
-            const name = document.getElementById('r-name').value || 'Аноним';
-            const rating = document.getElementById('r-rating').value;
-            const text = document.getElementById('r-text').value || 'Отличная работа!';
-            const stars = '⭐'.repeat(parseInt(rating));
-            const reviewText = `Привет, ТехноЛис! 🦊 Хочу оставить отзыв.\n\nИмя: ${name}\nОценка: ${stars} (${rating}/5)\nОтзыв: "${text}"\n\nМожешь добавить мой отзыв на сайт!`;
-            document.getElementById('r-output').value = reviewText;
+            const n = document.getElementById('r-name').value || 'Аноним';
+            const r = document.getElementById('r-rating').value;
+            const t = document.getElementById('r-text').value || 'Отличная работа!';
+            document.getElementById('r-output').value = `Привет, ТехноЛис! 🦊\nИмя: ${n}\nОценка: ${'⭐'.repeat(r)} (${r}/5)\nОтзыв: "${t}"`;
         }
 
-        function copyReview() {
-            const output = document.getElementById('r-output');
-            if (!output.value) { alert('Сначала сгенерируй отзыв! 🦊'); return; }
-            output.select();
-            document.execCommand('copy');
-            alert('Отзыв скопирован! Отправляй в Max, а я добавлю его через админку! 🦊');
-        }
+        // === КУРСОР ===
+        const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+            setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 50);
+        });
+        document.querySelectorAll('a, button, .card, .faq-question').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
 
-        // Частицы
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const particles = [];
-        for (let i = 0; i < 50; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2 + 1
-            });
-        }
+        // === ТЕМЫ ===
+        const themes = ['dark', 'light', 'fire', 'snow', 'night'];
+        const icons = ['🌙', '☀️', '🔥', '❄️', '🌌'];
+        let ti = 0;
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            ti = (ti + 1) % themes.length;
+            document.documentElement.setAttribute('data-theme', themes[ti]);
+            document.getElementById('themeToggle').textContent = icons[ti] + ' Тема';
+        });
 
+        // === SCROLL TOP ===
+        const stb = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => { stb.classList.toggle('visible', window.scrollY > 300); });
+        stb.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // === ЧАСТИЦЫ ===
+        const canvas = document.getElementById('particles-canvas'), ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const particles = Array.from({ length: 50 }, () => ({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, size: Math.random() * 2 + 1 }));
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
             particles.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
+                p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
             });
             requestAnimationFrame(animate);
         }
         animate();
+
+        // === ЗАПУСК ===
+        loadSiteData();
     </script>
 </body>
 </html>
