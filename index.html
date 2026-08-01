@@ -85,6 +85,78 @@
         .phone-link:hover { color: var(--accent-light); transform: scale(1.05); text-shadow: 0 0 30px var(--accent); }
         footer { background: var(--bg-secondary); }
         @media (max-width: 768px) { nav ul { display: none; } #hero h1 { font-size: 2.5rem; } section { padding: 70px 5%; } .grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr; } .section-title { font-size: 2rem; } }
+        .steam-banner {
+    background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+    color: #fff;
+    padding: 25px 5%;
+    text-align: center;
+    position: fixed;
+    top: 77px;
+    width: 100%;
+    z-index: 99;
+    border-bottom: 2px solid #66c0f4;
+    box-shadow: 0 5px 20px rgba(102, 192, 244, 0.3);
+    animation: steamPulse 3s ease-in-out infinite;
+}
+
+@keyframes steamPulse {
+    0%, 100% { box-shadow: 0 5px 20px rgba(102, 192, 244, 0.3); }
+    50% { box-shadow: 0 5px 30px rgba(102, 192, 244, 0.6); }
+}
+
+.steam-banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.steam-banner-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.steam-banner-text strong {
+    color: #66c0f4;
+    font-size: 1.2rem;
+}
+
+.yoomoney-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #8b3ffd;
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 3px 15px rgba(139, 63, 253, 0.4);
+}
+
+.yoomoney-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 25px rgba(139, 63, 253, 0.6);
+    background: #9b4fff;
+}
+
+.steam-icon {
+    font-size: 1.5rem;
+    margin-right: 8px;
+}
+
+header { top: 0 !important; }
+section { padding-top: 220px !important; }
+.steam-banner ~ section { padding-top: 220px !important; }
+
+@media (max-width: 768px) {
+    .steam-banner { top: 70px; padding: 20px 3%; }
+    .steam-banner-text { font-size: 0.95rem; }
+    .steam-banner-content { flex-direction: column; gap: 15px; }
+    section { padding-top: 260px !important; }
+}
     </style>
 </head>
 <body>
