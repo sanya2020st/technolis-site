@@ -1,0 +1,39 @@
+{
+  "projects": [
+    {
+      "title": "FOXKOD",
+      "icon": "🦊",
+      "description": "Язык программирования на русском языке.",
+      "link": "https://github.com/sanya2020st/FoxCode",
+      "order": 1
+    },
+    {
+      "title": "Snowy Deserts",
+      "icon": "❄️",
+      "description": "Глобальный мод для Minecraft.",
+      "link": "https://github.com/sanya2020st/Snowy-Deserts",
+      "order": 2
+    }
+  ],
+  "reviews": [
+    {
+      "name": "ТехноЛис",
+      "avatar": "🦊",
+      "rating": 5,
+      "text": "Вот так будет выглядеть твой отзыв!",
+      "date": "Март 2025"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Сколько времени занимает создание сайта?",
+      "answer": "Сроки зависят от сложности проекта. Простой лендинг — от 1 дня.",
+      "order": 1
+    }
+  ],
+  "settings": {
+    "hero_title": "🦊 ТехноЛис",
+    "hero_subtitle": "Создание сайтов на чистом коде. Быстро, красиво, надёжно.",
+    "about_text": "Привет! Я ТехноЛис — веб-разработчик."
+  }
+}
