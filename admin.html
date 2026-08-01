@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админка | ТехноЛис</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0a0a0c; color: #f0f0f0; margin: 0; padding: 40px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { color: #ff6b00; margin-bottom: 30px; }
+        .section { background: #1a1a20; padding: 25px; border-radius: 15px; margin-bottom: 20px; border: 1px solid rgba(255, 107, 0, 0.2); }
+        .section h2 { color: #ff9500; margin-top: 0; }
+        input, textarea { width: 100%; padding: 12px; margin: 8px 0; background: #0a0a0c; border: 1px solid rgba(255, 107, 0, 0.3); color: #f0f0f0; border-radius: 8px; box-sizing: border-box; }
+        textarea { min-height: 100px; resize: vertical; }
+        button { padding: 12px 25px; background: #ff6b00; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; margin: 5px; }
+        button:hover { background: #ff9500; }
+        .item { background: #121216; padding: 15px; border-radius: 10px; margin: 10px 0; }
+        .item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .delete-btn { background: #cc0000; padding: 6px 12px; font-size: 0.85rem; }
+        .delete-btn:hover { background: #ff0000; }
+        .success { background: rgba(0,200,0,0.2); color: #66ff66; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .warning { background: rgba(255, 165, 0, 0.2); color: #ffaa00; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦊 Админ-панель ТехноЛиса</h1>
+        
+        <div class="warning">
+            ⚠️ <strong>Важно:</strong> После сохранения изменений подожди 30 секунд, пока Netlify задеплоит сайт.
+        </div>
+        
+        <div class="success" id="successMsg">✅ Изменения сохранены! Сайт обновится через 30 секунд.</div>
+
+        <!-- ПРОЕКТЫ -->
+        <div class="section">
+            <h2>🚀 Проекты</h2>
+            <div id="projectsList"></div>
+            <button onclick="addProject()">➕ Добавить проект</button>
+        </div>
+
+        <!-- ОТЗЫВЫ -->
+        <div class="section">
+            <h2>⭐ Отзывы</h2>
+            <div id="reviewsList"></div>
+            <button onclick="addReview()">➕ Добавить отзыв</button>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section">
+            <h2>❓ FAQ</h2>
+            <div id="faqList"></div>
+            <button onclick="addFaq()">➕ Добавить вопрос</button>
+        </div>
+
+        <!-- НАСТРОЙКИ -->
+        <div class="section">
+            <h2>⚙️ Настройки</h2>
+            <label>Заголовок героя:</label>
+            <input type="text" id="hero_title">
+            <label>Подзаголовок:</label>
+            <input type="text" id="hero_subtitle">
+            <label>Текст обо мне:</label>
+            <textarea id="about_text"></textarea>
+        </div>
+
+        <button onclick="saveAll()" style="width: 100%; padding: 15px; font-size: 1.1rem;">💾 Сохранить все изменения</button>
+    </div>
+
+    <script>
+        let siteData = {};
+
+        // Загрузка данных
+        async function loadData() {
+            try {
+                const response = await fetch('_data/site.json');
+                siteData = await response.json();
+                renderProjects();
+                renderReviews();
+                renderFaq();
+                renderSettings();
+            } catch (e) {
+                alert('Ошибка загрузки данных: ' + e.message);
+            }
+        }
+
+        // Проекты
+        function renderProjects() {
+            const list = document.getElementById('projectsList');
+            list.innerHTML = siteData.projects.map((p, i) => `
+                <div class="item">
+                    <div class="item-header">
+                        <strong>${p.icon} ${p.title}</strong>
+                        <button class="delete-btn" onclick="deleteProject(${i})">🗑 Удалить</button>
+                    </div>
+                    <input type="text" value="${p.title}" onchange="siteData.projects[${i}].title=this.value" placeholder="Название">
+                    <input type="text" value="${p.icon}" onchange="siteData.projects[${i}].icon=this.value" placeholder="Иконка">
+                    <textarea onchange="siteData.projects[${i}].description=this.value" placeholder="Описание">${p.description}</textarea>
+                    <input type="text" value="${p.link}" onchange="siteData.projects[${i}].link=this.value" placeholder="Ссылка">
+                </div>
+            `).join('');
+        }
+
+        function addProject() {
+            siteData.projects.push({ title: 'Новый проект', icon: '🚀', description: 'Описание', link: 'https://', order: siteData.projects.length + 1 });
+            renderProjects();
+        }
+
+        function deleteProject(index) {
+            if (confirm('Удалить этот проект?')) {
+                siteData.projects.splice(index, 1);
+                renderProjects();
+            }
+        }
+
+        // Отзывы
+        function renderReviews() {
+            const list = document.getElementById('reviewsList');
+            list.innerHTML = siteData.reviews.map((r, i) => `
+                <div class="item">
+                    <div class="item-header">
+                        <strong>${r.avatar} ${r.name}</strong>
+                        <button class="delete-btn" onclick="deleteReview(${i})">🗑 Удалить</button>
+                    </div>
+                    <input type="text" value="${r.name}" onchange="siteData.reviews[${i}].name=this.value" placeholder="Имя">
+                    <input type="text" value="${r.avatar}" onchange="siteData.reviews[${i}].avatar=this.value" placeholder="Аватар">
+                    <input type="number" value="${r.rating}" onchange="siteData.reviews[${i}].rating=parseInt(this.value)" placeholder="Оценка (1-5)" min="1" max="5">
+                    <textarea onchange="siteData.reviews[${i}].text=this.value" placeholder="Текст отзыва">${r.text}</textarea>
+                    <input type="text" value="${r.date}" onchange="siteData.reviews[${i}].date=this.value" placeholder="Дата">
+                </div>
+            `).join('');
+        }
+
+        function addReview() {
+            siteData.reviews.push({ name: 'Новый отзыв', avatar: '🦊', rating: 5, text: 'Текст', date: '2026' });
+            renderReviews();
+        }
+
+        function deleteReview(index) {
+            if (confirm('Удалить этот отзыв?')) {
+                siteData.reviews.splice(index, 1);
+                renderReviews();
+            }
+        }
+
+        // FAQ
+        function renderFaq() {
+            const list = document.getElementById('faqList');
+            list.innerHTML = siteData.faq.map((f, i) => `
+                <div class="item">
+                    <div class="item-header">
+                        <strong>${f.question}</strong>
+                        <button class="delete-btn" onclick="deleteFaq(${i})">🗑 Удалить</button>
+                    </div>
+                    <input type="text" value="${f.question}" onchange="siteData.faq[${i}].question=this.value" placeholder="Вопрос">
+                    <textarea onchange="siteData.faq[${i}].answer=this.value" placeholder="Ответ">${f.answer}</textarea>
+                </div>
+            `).join('');
+        }
+
+        function addFaq() {
+            siteData.faq.push({ question: 'Новый вопрос', answer: 'Ответ', order: siteData.faq.length + 1 });
+            renderFaq();
+        }
+
+        function deleteFaq(index) {
+            if (confirm('Удалить этот вопрос?')) {
+                siteData.faq.splice(index, 1);
+                renderFaq();
+            }
+        }
+
+        // Настройки
+        function renderSettings() {
+            document.getElementById('hero_title').value = siteData.settings.hero_title;
+            document.getElementById('hero_subtitle').value = siteData.settings.hero_subtitle;
+            document.getElementById('about_text').value = siteData.settings.about_text;
+        }
+
+        // Сохранение
+        async function saveAll() {
+            siteData.settings.hero_title = document.getElementById('hero_title').value;
+            siteData.settings.hero_subtitle = document.getElementById('hero_subtitle').value;
+            siteData.settings.about_text = document.getElementById('about_text').value;
+
+            const json = JSON.stringify(siteData, null, 2);
+            
+            // Скачиваем файл
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'site.json';
+            a.click();
+            URL.revokeObjectURL(url);
+
+            document.getElementById('successMsg').style.display = 'block';
+            alert('✅ Файл скачан! Теперь замени _data/site.json на GitHub этим файлом и нажми Commit.');
+        }
+
+        // Загрузка при старте
+        loadData();
+    </script>
+</body>
+</html>
