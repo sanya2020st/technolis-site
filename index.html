@@ -5,165 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТехноЛис | Создание сайтов</title>
     <style>
-        :root { --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: rgba(20, 20, 30, 0.8); --text-primary: #f0f0f0; --text-secondary: #a0a0b0; --accent: #ff6b00; --accent-light: #ff9500; --accent-glow: rgba(255, 107, 0, 0.3); --border: rgba(255, 107, 0, 0.15); --glow: 0 0 20px rgba(255, 107, 0, 0.2); --shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-        [data-theme="light"] { --bg-primary: #f8f9fa; --bg-secondary: #ffffff; --bg-card: rgba(255, 255, 255, 0.9); --text-primary: #1a1a2e; --text-secondary: #555570; --accent: #e65c00; --accent-light: #ff7a00; --accent-glow: rgba(230, 92, 0, 0.2); --border: rgba(230, 92, 0, 0.2); --glow: 0 0 20px rgba(230, 92, 0, 0.15); --shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
-        [data-theme="fire"] { --bg-primary: #1a0505; --bg-secondary: #2a0a0a; --bg-card: rgba(40, 10, 10, 0.8); --text-primary: #fff0f0; --text-secondary: #ffaaaa; --accent: #ff2200; --accent-light: #ff4400; --accent-glow: rgba(255, 34, 0, 0.3); --border: rgba(255, 34, 0, 0.3); --glow: 0 0 20px rgba(255, 34, 0, 0.3); --shadow: 0 10px 30px rgba(255, 34, 0, 0.2); }
-        [data-theme="snow"] { --bg-primary: #0a1520; --bg-secondary: #102030; --bg-card: rgba(15, 30, 45, 0.8); --text-primary: #f0f8ff; --text-secondary: #aaccdd; --accent: #00aaff; --accent-light: #55ccff; --accent-glow: rgba(0, 170, 255, 0.3); --border: rgba(0, 170, 255, 0.2); --glow: 0 0 20px rgba(0, 170, 255, 0.2); --shadow: 0 10px 30px rgba(0, 170, 255, 0.2); }
-        [data-theme="night"] { --bg-primary: #050510; --bg-secondary: #0a0a1a; --bg-card: rgba(10, 10, 30, 0.8); --text-primary: #e0e0ff; --text-secondary: #8888aa; --accent: #aa00ff; --accent-light: #cc55ff; --accent-glow: rgba(170, 0, 255, 0.3); --border: rgba(170, 0, 255, 0.2); --glow: 0 0 20px rgba(170, 0, 255, 0.2); --shadow: 0 10px 30px rgba(170, 0, 255, 0.2); }
+        :root { --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: rgba(20, 20, 30, 0.85); --text-primary: #f0f0f0; --text-secondary: #a0a0b0; --accent: #ff6b00; --accent-light: #ff9500; --accent-glow: rgba(255, 107, 0, 0.35); --border: rgba(255, 107, 0, 0.2); --glow: 0 0 25px rgba(255, 107, 0, 0.3); --shadow: 0 15px 40px rgba(0, 0, 0, 0.4); }
+        [data-theme="light"] { --bg-primary: #f8f9fa; --bg-secondary: #ffffff; --bg-card: rgba(255, 255, 255, 0.95); --text-primary: #1a1a2e; --text-secondary: #555570; --accent: #e65c00; --accent-light: #ff7a00; --accent-glow: rgba(230, 92, 0, 0.25); --border: rgba(230, 92, 0, 0.25); --glow: 0 0 25px rgba(230, 92, 0, 0.2); --shadow: 0 15px 40px rgba(0, 0, 0, 0.12); }
+        [data-theme="fire"] { --bg-primary: #1a0505; --bg-secondary: #2a0a0a; --bg-card: rgba(40, 10, 10, 0.85); --text-primary: #fff0f0; --text-secondary: #ffaaaa; --accent: #ff2200; --accent-light: #ff4400; --accent-glow: rgba(255, 34, 0, 0.4); --border: rgba(255, 34, 0, 0.35); --glow: 0 0 25px rgba(255, 34, 0, 0.4); --shadow: 0 15px 40px rgba(255, 34, 0, 0.25); }
+        [data-theme="snow"] { --bg-primary: #0a1520; --bg-secondary: #102030; --bg-card: rgba(15, 30, 45, 0.85); --text-primary: #f0f8ff; --text-secondary: #aaccdd; --accent: #00aaff; --accent-light: #55ccff; --accent-glow: rgba(0, 170, 255, 0.4); --border: rgba(0, 170, 255, 0.25); --glow: 0 0 25px rgba(0, 170, 255, 0.3); --shadow: 0 15px 40px rgba(0, 170, 255, 0.25); }
+        [data-theme="night"] { --bg-primary: #050510; --bg-secondary: #0a0a1a; --bg-card: rgba(10, 10, 30, 0.85); --text-primary: #e0e0ff; --text-secondary: #8888aa; --accent: #aa00ff; --accent-light: #cc55ff; --accent-glow: rgba(170, 0, 255, 0.4); --border: rgba(170, 0, 255, 0.25); --glow: 0 0 25px rgba(170, 0, 255, 0.3); --shadow: 0 15px 40px rgba(170, 0, 255, 0.25); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; background-image: radial-gradient(circle at 20% 50%, var(--accent-glow) 0%, transparent 50%), radial-gradient(circle at 80% 80%, var(--accent-glow) 0%, transparent 50%); background-attachment: fixed; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.7; overflow-x: hidden; background-image: radial-gradient(circle at 20% 50%, var(--accent-glow) 0%, transparent 50%), radial-gradient(circle at 80% 80%, var(--accent-glow) 0%, transparent 50%); background-attachment: fixed; }
         a { color: var(--accent); text-decoration: none; transition: all 0.3s; }
         a:hover { color: var(--accent-light); text-shadow: var(--glow); transform: translateY(-2px); }
-        #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
-        header { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; box-shadow: var(--shadow); }
-        [data-theme="light"] header { background: rgba(248, 249, 250, 0.9); }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--accent); letter-spacing: 3px; text-shadow: var(--glow); }
+
+        /* ПРЕЛОАДЕР */
+        .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-primary); display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s, visibility 0.5s; }
+        .preloader.hidden { opacity: 0; visibility: hidden; }
+        .preloader-fox { font-size: 5rem; animation: foxBounce 1s ease-in-out infinite; }
+        @keyframes foxBounce { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(10deg); } }
+
+        /* SCROLL PROGRESS */
+        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); z-index: 10000; transition: width 0.1s; }
+
+        /* ЧАСТИЦЫ */
+        #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; pointer-events: none; }
+
+        /* ХЕДЕР */
+        header { position: fixed; top: 0; width: 100%; padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 100; box-shadow: var(--shadow); }
+        [data-theme="light"] header { background: rgba(248, 249, 250, 0.95); }
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--accent); letter-spacing: 3px; text-shadow: var(--glow); }
         nav ul { display: flex; gap: 25px; list-style: none; }
         nav a { color: var(--text-primary); font-weight: 500; position: relative; }
         nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .theme-toggle { background: none; border: 2px solid var(--accent); color: var(--accent); padding: 10px 20px; border-radius: 25px; transition: all 0.3s; font-weight: bold; box-shadow: 0 0 15px var(--accent-glow); }
+        .theme-toggle { background: none; border: 2px solid var(--accent); color: var(--accent); padding: 8px 18px; border-radius: 25px; transition: all 0.3s; font-weight: bold; box-shadow: 0 0 15px var(--accent-glow); }
         .theme-toggle:hover { background: var(--accent); color: var(--bg-primary); box-shadow: 0 0 25px var(--accent); transform: scale(1.05); }
-        section { padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
-        .section-title { font-size: 2.8rem; margin-bottom: 40px; position: relative; display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 60%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); border-radius: 2px; box-shadow: var(--glow); }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-80px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(80px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* STEAM БАННЕР */
+        .steam-banner { background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%); color: #fff; padding: 18px 5%; text-align: center; position: fixed; top: 73px; width: 100%; z-index: 99; border-bottom: 2px solid #66c0f4; box-shadow: 0 5px 25px rgba(102, 192, 244, 0.4); animation: steamPulse 3s ease-in-out infinite; }
+        @keyframes steamPulse { 0%, 100% { box-shadow: 0 5px 25px rgba(102, 192, 244, 0.4); } 50% { box-shadow: 0 5px 35px rgba(102, 192, 244, 0.7); } }
+        .steam-banner-content { display: flex; justify-content: center; align-items: center; gap: 25px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+        .steam-banner-text { font-size: 1.05rem; }
+        .steam-banner-text strong { color: #66c0f4; font-size: 1.15rem; }
+        .steam-banner-text .name { color: #ffd700; font-weight: bold; }
+        .yoomoney-btn { display: inline-block; padding: 10px 28px; background: linear-gradient(135deg, #8b3ffd, #9b4fff); color: #fff; border-radius: 30px; text-decoration: none; font-weight: bold; transition: all 0.3s; box-shadow: 0 5px 20px rgba(139, 63, 253, 0.5); }
+        .yoomoney-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 30px rgba(139, 63, 253, 0.7); }
+
+        /* СЕКЦИИ */
+        section { padding: 110px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        .section-title { font-size: 3rem; margin-bottom: 50px; position: relative; display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800; }
+        .section-title::after { content: ''; position: absolute; bottom: -15px; left: 0; width: 70%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); border-radius: 2px; box-shadow: var(--glow); }
+
+        /* АНИМАЦИИ */
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: var(--accent); } }
-        .slide-in-left { opacity: 0; animation: slideInLeft 0.6s ease-out forwards; }
-        .slide-in-right { opacity: 0; animation: slideInRight 0.6s ease-out forwards; }
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        #hero { text-align: center; background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-primary), var(--bg-secondary)); background-size: 400% 400%; animation: gradientShift 15s ease infinite; position: relative; overflow: hidden; }
-        #hero::before { content: ''; position: absolute; top: 50%; left: 50%; width: 500px; height: 500px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); transform: translate(-50%, -50%); animation: float 6s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translate(-50%, -50%); } 50% { transform: translate(-50%, -55%); } }
-        #hero h1 { font-size: 4rem; margin-bottom: 20px; position: relative; z-index: 1; }
-        #hero h1 span { color: var(--accent); text-shadow: 0 0 30px var(--accent); background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 3s linear infinite; }
+        @keyframes panicFlash { 0% { background-color: #300; } 50% { background-color: #900; } 100% { background-color: #300; } }
+        @keyframes foxFall { 0% { top: -50px; transform: rotate(0deg); } 100% { top: 110vh; transform: rotate(360deg); } }
+        .slide-in-left { opacity: 0; animation: slideInLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .slide-in-right { opacity: 0; animation: slideInRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .fade-in { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* HERO */
+        #hero { text-align: center; background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-primary), var(--bg-secondary)); background-size: 400% 400%; animation: gradientShift 15s ease infinite; position: relative; overflow: hidden; }
+        #hero::before { content: ''; position: absolute; top: 50%; left: 50%; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); transform: translate(-50%, -50%); animation: float 6s ease-in-out infinite; }
+        #hero h1 { font-size: 4.5rem; margin-bottom: 25px; position: relative; z-index: 1; font-weight: 800; }
+        #hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 3s linear infinite; }
         .typewriter { display: inline-block; border-right: 3px solid var(--accent); animation: blink 0.7s step-end infinite; }
-        #hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 30px; position: relative; z-index: 1; }
-        .btn-primary { display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border-radius: 30px; font-weight: bold; box-shadow: 0 5px 20px var(--accent-glow); transition: all 0.3s; border: none; font-size: 1rem; position: relative; overflow: hidden; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 40px var(--accent); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 50px 0; }
-        .stat-card { text-align: center; padding: 35px 25px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 15px; box-shadow: var(--shadow); transition: all 0.3s; position: relative; overflow: hidden; }
-        .stat-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 50px var(--accent-glow); }
-        .stat-number { font-size: 3rem; font-weight: bold; color: var(--accent); margin-bottom: 10px; text-shadow: var(--glow); }
-        .stat-label { color: var(--text-secondary); font-size: 1rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 15px; padding: 30px; transition: all 0.3s; position: relative; overflow: hidden; box-shadow: var(--shadow); }
-        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 50px var(--accent-glow); }
-        .card h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.5rem; text-shadow: var(--glow); }
-        .card ul { padding-left: 20px; color: var(--text-secondary); }
-        .card ul li { margin-bottom: 10px; position: relative; }
-        .card ul li::before { content: '▸'; color: var(--accent); position: absolute; left: -15px; }
-        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 15px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.3s; }
-        .faq-item:hover { border-color: var(--accent); box-shadow: 0 8px 30px var(--accent-glow); }
-        .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: var(--text-primary); transition: all 0.3s; }
+        #hero p { font-size: 1.3rem; color: var(--text-secondary); max-width: 750px; margin: 0 auto 40px; position: relative; z-index: 1; }
+        .btn-primary { display: inline-block; padding: 18px 50px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border-radius: 35px; font-weight: bold; box-shadow: 0 8px 30px var(--accent-glow); transition: all 0.3s; border: none; font-size: 1.1rem; }
+        .btn-primary:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 50px var(--accent); }
+
+        /* СТАТИСТИКА */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 35px; margin: 60px 0; }
+        .stat-card { text-align: center; padding: 40px 30px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); transition: all 0.4s; }
+        .stat-card:hover { transform: translateY(-15px) scale(1.03); border-color: var(--accent); box-shadow: 0 20px 60px var(--accent-glow); }
+        .stat-number { font-size: 3.5rem; font-weight: 800; color: var(--accent); margin-bottom: 15px; text-shadow: var(--glow); }
+        .stat-label { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* КАРТОЧКИ */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 35px; transition: all 0.4s; position: relative; overflow: hidden; box-shadow: var(--shadow); }
+        .card:hover { transform: translateY(-15px) scale(1.02); border-color: var(--accent); box-shadow: 0 20px 60px var(--accent-glow); }
+        .card h3 { color: var(--accent); margin-bottom: 20px; font-size: 1.7rem; font-weight: 700; }
+        .card ul { padding-left: 25px; color: var(--text-secondary); }
+        .card ul li { margin-bottom: 12px; position: relative; }
+        .card ul li::before { content: '▸'; color: var(--accent); position: absolute; left: -20px; font-weight: bold; }
+        .services-subtitle { grid-column: 1 / -1; font-size: 1.8rem; color: var(--accent-light); border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-top: 20px; }
+        .services-subtitle:first-child { margin-top: 0; }
+
+        /* FAQ */
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 15px; margin-bottom: 18px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.3s; }
+        .faq-item:hover { border-color: var(--accent); box-shadow: 0 10px 40px var(--accent-glow); }
+        .faq-question { padding: 25px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; transition: all 0.3s; }
         .faq-question:hover { background: var(--accent-glow); }
-        .faq-icon { font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; text-shadow: var(--glow); }
+        .faq-icon { font-size: 1.8rem; color: var(--accent); transition: transform 0.3s; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-secondary); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-secondary); }
         .faq-item.active .faq-answer { max-height: 500px; }
-        .faq-answer-content { padding: 0 20px 20px; line-height: 1.7; }
-        .review-card { display: flex; flex-direction: column; gap: 15px; }
-        .review-header { display: flex; align-items: center; gap: 15px; }
-        .review-avatar { width: 55px; height: 55px; background: var(--bg-primary); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 0 15px var(--accent-glow); }
-        .review-stars { font-size: 0.9rem; letter-spacing: 2px; }
-        .review-text { color: var(--text-secondary); font-style: italic; line-height: 1.7; flex-grow: 1; }
-        .review-date { color: var(--accent); font-size: 0.85rem; font-weight: bold; text-align: right; }
-        .brief-form { background: var(--bg-card); padding: 35px; border-radius: 15px; border: 1px solid var(--border); box-shadow: var(--shadow); }
-        .brief-form label { display: block; margin-bottom: 6px; color: var(--text-secondary); font-weight: bold; }
-        .brief-form input, .brief-form select, .brief-form textarea { width: 100%; padding: 12px; margin-bottom: 20px; background: var(--bg-primary); border: 2px solid var(--border); color: var(--text-primary); border-radius: 10px; font-size: 1rem; transition: all 0.3s; }
-        .brief-form input:focus, .brief-form select:focus, .brief-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
-        .brief-form textarea { min-height: 90px; resize: vertical; }
-        .brief-output { width: 100%; min-height: 220px; padding: 18px; background: var(--bg-primary); border: 2px dashed var(--accent); color: var(--accent); font-family: 'Courier New', monospace; border-radius: 10px; margin-top: 20px; font-size: 0.9rem; }
-        .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border: none; border-radius: 50%; font-size: 1.6rem; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 1000; box-shadow: 0 5px 25px var(--accent-glow); }
+        .faq-answer-content { padding: 0 25px 25px; line-height: 1.8; }
+
+        /* ОТЗЫВЫ */
+        .review-card { display: flex; flex-direction: column; gap: 18px; }
+        .review-header { display: flex; align-items: center; gap: 20px; }
+        .review-avatar { width: 60px; height: 60px; background: var(--bg-primary); border: 3px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 0 20px var(--accent-glow); }
+        .review-stars { font-size: 1rem; letter-spacing: 3px; }
+        .review-text { color: var(--text-secondary); font-style: italic; line-height: 1.8; flex-grow: 1; }
+        .review-date { color: var(--accent); font-size: 0.9rem; font-weight: bold; text-align: right; }
+
+        /* ФОРМЫ */
+        .brief-form { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        .brief-form label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-weight: bold; }
+        .brief-form input, .brief-form select, .brief-form textarea { width: 100%; padding: 15px; margin-bottom: 25px; background: var(--bg-primary); border: 2px solid var(--border); color: var(--text-primary); border-radius: 12px; font-size: 1rem; transition: all 0.3s; }
+        .brief-form input:focus, .brief-form select:focus, .brief-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+        .brief-form textarea { min-height: 100px; resize: vertical; }
+        .brief-output { width: 100%; min-height: 220px; padding: 20px; background: var(--bg-primary); border: 2px dashed var(--accent); color: var(--accent); font-family: 'Courier New', monospace; border-radius: 12px; margin-top: 25px; font-size: 0.95rem; }
+
+        /* SCROLL TOP */
+        .scroll-top { position: fixed; bottom: 35px; right: 35px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border: none; border-radius: 50%; font-size: 1.8rem; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 1000; box-shadow: 0 8px 30px var(--accent-glow); }
         .scroll-top.visible { opacity: 1; visibility: visible; }
-        .scroll-top:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 10px 40px var(--accent); }
-        .phone-link { font-size: 1.8rem; font-weight: bold; color: var(--accent); text-decoration: none; display: inline-block; margin: 10px 0; text-shadow: var(--glow); transition: all 0.3s; }
-        .phone-link:hover { color: var(--accent-light); transform: scale(1.05); text-shadow: 0 0 30px var(--accent); }
+        .scroll-top:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 12px 45px var(--accent); }
+
+        /* ПАСХАЛКИ */
+        .easter-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 99999; }
+        .easter-modal.active { display: flex; }
+        .easter-content { background: #1a1a20; border: 2px solid #ff6b00; border-radius: 20px; padding: 40px; max-width: 600px; text-align: center; color: #f0f0f0; box-shadow: 0 0 60px rgba(255, 107, 0, 0.5); }
+        .easter-content h2 { color: #ff6b00; margin-bottom: 20px; }
+        .easter-content p { font-size: 1.1rem; line-height: 1.7; white-space: pre-wrap; }
+        .close-modal { margin-top: 25px; padding: 12px 35px; background: #ff6b00; color: #fff; border: none; border-radius: 10px; font-weight: bold; font-size: 1rem; }
+        .dev-console { position: fixed; top: 0; left: 0; width: 100%; height: 300px; background: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; z-index: 99999; display: none; overflow-y: auto; border-bottom: 2px solid #0f0; }
+        .dev-console.active { display: block; }
+        .dev-console input { background: transparent; border: none; color: #0f0; font-family: inherit; font-size: 1rem; width: 80%; outline: none; }
+
+        .phone-link { font-size: 2rem; font-weight: bold; color: var(--accent); text-decoration: none; display: inline-block; margin: 15px 0; text-shadow: var(--glow); transition: all 0.3s; }
+        .phone-link:hover { color: var(--accent-light); transform: scale(1.08); text-shadow: 0 0 40px var(--accent); }
         footer { background: var(--bg-secondary); }
-        @media (max-width: 768px) { nav ul { display: none; } #hero h1 { font-size: 2.5rem; } section { padding: 70px 5%; } .grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr; } .section-title { font-size: 2rem; } }
-        .steam-banner {
-    background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
-    color: #fff;
-    padding: 25px 5%;
-    text-align: center;
-    position: fixed;
-    top: 77px;
-    width: 100%;
-    z-index: 99;
-    border-bottom: 2px solid #66c0f4;
-    box-shadow: 0 5px 20px rgba(102, 192, 244, 0.3);
-    animation: steamPulse 3s ease-in-out infinite;
-}
 
-@keyframes steamPulse {
-    0%, 100% { box-shadow: 0 5px 20px rgba(102, 192, 244, 0.3); }
-    50% { box-shadow: 0 5px 30px rgba(102, 192, 244, 0.6); }
-}
-
-.steam-banner-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.steam-banner-text {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-.steam-banner-text strong {
-    color: #66c0f4;
-    font-size: 1.2rem;
-}
-
-.yoomoney-btn {
-    display: inline-block;
-    padding: 10px 25px;
-    background: #8b3ffd;
-    color: #fff;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s;
-    box-shadow: 0 3px 15px rgba(139, 63, 253, 0.4);
-}
-
-.yoomoney-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 25px rgba(139, 63, 253, 0.6);
-    background: #9b4fff;
-}
-
-.steam-icon {
-    font-size: 1.5rem;
-    margin-right: 8px;
-}
-
-header { top: 0 !important; }
-section { padding-top: 220px !important; }
-.steam-banner ~ section { padding-top: 220px !important; }
-
-@media (max-width: 768px) {
-    .steam-banner { top: 70px; padding: 20px 3%; }
-    .steam-banner-text { font-size: 0.95rem; }
-    .steam-banner-content { flex-direction: column; gap: 15px; }
-    section { padding-top: 260px !important; }
-}
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            #hero h1 { font-size: 2.5rem; }
+            section { padding: 80px 5%; }
+            .grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2rem; }
+            .steam-banner { top: 65px; padding: 15px 3%; }
+            .steam-banner-text { font-size: 0.9rem; }
+            .steam-banner-content { flex-direction: column; gap: 12px; }
+        }
     </style>
 </head>
 <body>
+    <div class="preloader" id="preloader"><div class="preloader-fox">🦊</div></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <canvas id="particles-canvas"></canvas>
     <button class="scroll-top" id="scrollTop">⬆️</button>
+
     <header>
-        <div class="logo">TECHNOLIS</div>
+        <div class="logo" id="logoBtn">TECHNOLIS</div>
         <nav><ul>
             <li><a href="#about">Обо мне</a></li>
             <li><a href="#projects">Проекты</a></li>
@@ -174,6 +173,16 @@ section { padding-top: 220px !important; }
         <button class="theme-toggle" id="themeToggle">🌙 Тема</button>
     </header>
 
+    <div class="steam-banner">
+        <div class="steam-banner-content">
+            <div class="steam-banner-text">
+                🎮 <strong>Поддержи разработчика!</strong>
+                Пополнение Steam-кошелька через ЮMoney на имя: <span class="name">[ТВОЁ_ИМЯ]</span>
+            </div>
+            <a href="https://yoomoney.ru/" target="_blank" class="yoomoney-btn">💜 Перейти на ЮMoney</a>
+        </div>
+    </div>
+
     <section id="hero">
         <h1 id="heroTitle">🦊 ТехноЛис <span class="typewriter" id="typewriter"></span></h1>
         <p class="fade-in" id="heroSubtitle">Создание сайтов на чистом коде. Быстро, красиво, надёжно. Пацан умеет и могёт!</p>
@@ -182,64 +191,107 @@ section { padding-top: 220px !important; }
 
     <section id="stats">
         <h2 class="section-title slide-in-left">Мои достижения</h2>
-        <div class="stats-grid">
-            <div class="stat-card slide-in-left" style="animation-delay: 0.1s;"><div class="stat-number" data-target="10">0</div><div class="stat-label">Проектов завершено</div></div>
-            <div class="stat-card slide-in-right" style="animation-delay: 0.2s;"><div class="stat-number" data-target="50">0</div><div class="stat-label">Довольных клиентов</div></div>
-            <div class="stat-card slide-in-left" style="animation-delay: 0.3s;"><div class="stat-number" data-target="2">0</div><div class="stat-label">Года опыта</div></div>
-            <div class="stat-card slide-in-right" style="animation-delay: 0.4s;"><div class="stat-number" data-target="99">0</div><div class="stat-label">% качества</div></div>
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card slide-in-left" style="animation-delay:0.1s"><div class="stat-number" data-target="10">0</div><div class="stat-label">Проектов завершено</div></div>
+            <div class="stat-card slide-in-right" style="animation-delay:0.2s"><div class="stat-number" data-target="50">0</div><div class="stat-label">Довольных клиентов</div></div>
+            <div class="stat-card slide-in-left" style="animation-delay:0.3s"><div class="stat-number" data-target="2">0</div><div class="stat-label">Года опыта</div></div>
+            <div class="stat-card slide-in-right" style="animation-delay:0.4s"><div class="stat-number" data-target="99" data-suffix="%">0</div><div class="stat-label">качества</div></div>
         </div>
     </section>
 
     <section id="about">
         <h2 class="section-title slide-in-left">Обо мне</h2>
-        <p class="slide-in-right" id="aboutText" style="font-size: 1.2rem; max-width: 800px;">Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript. Никаких конструкторов, только код. Каждый пиксель продуман, каждая анимация отточена. Мне 11 лет, и я уже создал свой язык программирования FOXKOD и мод для Minecraft Snowy Deserts.</p>
+        <p class="slide-in-right" id="aboutText" style="font-size:1.25rem;max-width:850px;">Привет! Я ТехноЛис — веб-разработчик, который создаёт сайты на чистом HTML, CSS и JavaScript. Никаких конструкторов, только код. Каждый пиксель продуман, каждая анимация отточена. Мне 11 лет, и я уже создал свой язык программирования FOXKOD и мод для Minecraft Snowy Deserts.</p>
     </section>
 
     <section id="projects">
         <h2 class="section-title slide-in-left">Мои работы</h2>
         <div class="grid" id="projectsGrid">
-            <div class="card slide-in-left" style="animation-delay: 0.1s;"><h3>🦊 FOXKOD</h3><p>Язык программирования на русском языке.</p><br><a href="https://github.com/sanya2020st/FoxCode" target="_blank">Посмотреть →</a></div>
-            <div class="card slide-in-right" style="animation-delay: 0.2s;"><h3>❄️ Snowy Deserts</h3><p>Глобальный мод для Minecraft.</p><br><a href="https://github.com/sanya2020st/Snowy-Deserts" target="_blank">Посмотреть →</a></div>
+            <div class="card slide-in-left" style="animation-delay:0.1s"><h3>🦊 FOXKOD</h3><p>Язык программирования на русском языке.</p><br><a href="https://github.com/sanya2020st/FoxCode" target="_blank">Посмотреть →</a></div>
+            <div class="card slide-in-right" style="animation-delay:0.2s"><h3>❄️ Snowy Deserts</h3><p>Глобальный мод для Minecraft.</p><br><a href="https://github.com/sanya2020st/Snowy-Deserts" target="_blank">Посмотреть →</a></div>
+        </div>
+    </section>
+
+    <section id="rules">
+        <h2 class="section-title slide-in-left">Правила Леса</h2>
+        <div class="grid">
+            <div class="card slide-in-left">
+                <h3>📜 Закон и Порядок</h3>
+                <ul>
+                    <li>Не принимаю физические подарки (виртуальные — можно 🦊).</li>
+                    <li>Сроки не ограничены, начиная от одного дня.</li>
+                    <li>Заливаю сайты только на русские хостинги (скорость — наше всё).</li>
+                    <li>Админка (CMS) делается строго по желанию.</li>
+                    <li>Обязательное ТЗ перед началом в виде файла .txt / .word.</li>
+                </ul>
+            </div>
+            <div class="card slide-in-right">
+                <h3>🤝 Честно и Прозрачно</h3>
+                <ul>
+                    <li><strong>О хостинге:</strong> Домен и хостинг оплачиваешь ты, а я лишь бесплатно заливаю сайт на твой аккаунт.</li>
+                    <li><strong>Только код:</strong> Не делаю сайты на конструкторах. Только чистый HTML/CSS/JS.</li>
+                    <li><strong>Связь:</strong> Работаем только в отечественных мессенджерах.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <section id="services">
         <h2 class="section-title slide-in-left">Услуги и Тарифы</h2>
         <div class="grid">
-            <div class="card slide-in-left" style="animation-delay: 0.1s;"><h3>💼 Веб-Мал (НР)</h3><p style="font-size: 2rem; color: var(--accent); font-weight: bold;">от 240₽</p><ul><li>Одностраничный сайт</li><li>Адаптивный дизайн</li><li>Базовая анимация</li></ul></div>
-            <div class="card slide-in-right" style="animation-delay: 0.2s;"><h3>🚀 Веб-Большой (Р)</h3><p style="font-size: 2rem; color: var(--accent); font-weight: bold;">от 1060₽</p><ul><li>Многостраничный сайт</li><li>Админ-панель</li><li>Продвинутые анимации</li></ul></div>
+            <h3 class="services-subtitle slide-in-left">📉 Не рекламные (НР) — Имидж и Визитка</h3>
+            <div class="card slide-in-left" style="animation-delay:0.1s"><h3>Веб-Мал (НР)</h3><p style="font-size:2rem;color:var(--accent);font-weight:800">от 240₽</p><ul><li>1 страница</li><li>Контент: Мало +0₽ / Средне +10₽ / Много +50₽</li><li>3 правки (черновик) + 3 правки (готовый)</li></ul></div>
+            <div class="card slide-in-right" style="animation-delay:0.2s"><h3>Веб-Средний (НР)</h3><p style="font-size:2rem;color:var(--accent);font-weight:800">от 320₽</p><ul><li>2-4 страницы</li><li>Контент: Средне/Много +20₽</li><li>4 правки (черновик) + 4 правки (готовый)</li></ul></div>
+            <div class="card slide-in-left" style="animation-delay:0.3s"><h3>Веб-Большой (НР)</h3><p style="font-size:2rem;color:var(--accent);font-weight:800">от 760₽</p><ul><li>4-7 страниц</li><li>Контент: Много +70₽</li><li>5 правок (черновик) + 5 правок (готовый)</li></ul></div>
+            <h3 class="services-subtitle slide-in-right">📈 Рекламные (Р) — Продажи и Конверсия</h3>
+            <div class="card slide-in-left" style="animation-delay:0.1s"><h3>Веб-Мал (Р)</h3><p style="font-size:2rem;color:var(--accent);font-weight:800">от 320₽</p><ul><li>1 страница (Продающий лендинг)</li><li>Любое количество контента: +0₽</li><li>3 правки (черновик) + 6 правок (готовый)</li></ul></div>
+            <div class="card slide-in-right" style="animation-delay:0.2s"><h3>Веб-Средний (Р)</h3><p style="font-size:2rem;color:var(--accent);font-weight:800">от 560₽</p><ul><li>2-4 страницы</li><li>Контент: Средне/Много +30₽</li><li>6 правок (черновик) + 6 правок (готовый)</li></ul></div>
+            <div class="card slide-in-left" style="animation-delay:0.3s"><h3>Веб-Большой (Р)</h3><p style="font-size:2rem;color:var(--accent);font-weight:800">от 1060₽</p><ul><li>4-7 страниц</li><li>Контент: Много +60₽</li><li>6 правок (черновик) + 6 правок (готовый)</li></ul></div>
         </div>
     </section>
 
     <section id="reviews">
         <h2 class="section-title slide-in-left">Отзывы клиентов</h2>
-        <p class="slide-in-right" style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem;">Что говорят те, кто уже доверил мне свои проекты 🦊</p>
+        <p class="slide-in-right" style="color:var(--text-secondary);margin-bottom:40px;font-size:1.15rem;">Что говорят те, кто уже доверил мне свои проекты 🦊</p>
         <div class="grid" id="reviewsGrid">
-            <div class="card slide-in-left review-card" style="animation-delay: 0.1s;"><div class="review-header"><div class="review-avatar">🦊</div><div><h4>ТехноЛис</h4><div class="review-stars">⭐⭐⭐⭐⭐</div></div></div><p class="review-text">"Вот так будет выглядеть твой отзыв!"</p><div class="review-date">Март 2025</div></div>
+            <div class="card slide-in-left review-card"><div class="review-header"><div class="review-avatar">🦊</div><div><h4>ТехноЛис</h4><div class="review-stars">⭐⭐⭐⭐⭐</div></div></div><p class="review-text">"Вот так будет выглядеть твой отзыв!"</p><div class="review-date">Март 2025</div></div>
         </div>
-        <div class="brief-form slide-in-right" style="margin-top: 50px;">
-            <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.5rem;">✍️ Оставить отзыв</h3>
+        <div class="brief-form slide-in-right" style="margin-top:50px">
+            <h3 style="color:var(--accent);margin-bottom:25px;font-size:1.6rem">✍️ Оставить отзыв</h3>
             <label>Как тебя зовут?</label><input type="text" id="r-name" placeholder="Твоё имя">
             <label>Оценка (от 1 до 5)</label>
             <select id="r-rating"><option value="5">⭐⭐⭐⭐⭐ — Отлично!</option><option value="4">⭐⭐⭐⭐ — Хорошо</option><option value="3">⭐⭐⭐ — Нормально</option><option value="2">⭐⭐ — Плохо</option><option value="1">⭐ — Ужасно</option></select>
-            <label>Твой отзыв</label><textarea id="r-text" placeholder="Расскажи, как тебе сайт..." style="min-height: 120px;"></textarea>
-            <button class="btn-primary" onclick="generateReview()" style="width: 100%;">🦊 Сгенерировать текст</button>
-            <textarea class="brief-output" id="r-output" readonly placeholder="Здесь появится текст..." style="min-height: 120px;"></textarea>
-            <button class="btn-primary" onclick="copyText('r-output')" style="width: 100%; margin-top: 10px; background: var(--bg-card); color: var(--accent); border: 1px solid var(--accent);">📋 Скопировать</button>
+            <label>Твой отзыв</label><textarea id="r-text" placeholder="Расскажи, как тебе сайт..." style="min-height:120px"></textarea>
+            <button class="btn-primary" onclick="generateReview()" style="width:100%">🦊 Сгенерировать текст</button>
+            <textarea class="brief-output" id="r-output" readonly placeholder="Здесь появится текст..." style="min-height:120px"></textarea>
+            <button class="btn-primary" onclick="copyText('r-output')" style="width:100%;margin-top:15px;background:var(--bg-card);color:var(--accent);border:1px solid var(--accent)">📋 Скопировать</button>
         </div>
     </section>
 
     <section id="faq">
         <h2 class="section-title slide-in-left">Частые вопросы</h2>
         <div class="faq-list" id="faqList">
-            <div class="faq-item slide-in-left" style="animation-delay: 0.1s;"><div class="faq-question"><span>Сколько времени занимает создание сайта?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Сроки зависят от сложности проекта. Простой лендинг — от 1 дня.</div></div></div>
+            <div class="faq-item slide-in-left" style="animation-delay:0.1s"><div class="faq-question"><span>Сколько времени занимает создание сайта?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Сроки зависят от сложности. Простой лендинг — от 1 дня, многостраничный — от 3-7 дней.</div></div></div>
+            <div class="faq-item slide-in-right" style="animation-delay:0.2s"><div class="faq-question"><span>Нужно ли мне самому покупать хостинг?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Да, хостинг и домен оплачиваются отдельно. Это твой цифровой дом.</div></div></div>
+            <div class="faq-item slide-in-left" style="animation-delay:0.3s"><div class="faq-question"><span>Можно ли внести правки после завершения?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Конечно! В каждый тариф включены правки. Доп. правка — 20₽.</div></div></div>
+            <div class="faq-item slide-in-right" style="animation-delay:0.4s"><div class="faq-question"><span>Как происходит оплата?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Предоплата 50% перед началом. Остальные 50% — после одобрения результата.</div></div></div>
+            <div class="faq-item slide-in-left" style="animation-delay:0.5s"><div class="faq-question"><span>Делаете ли вы сайты на Tilda или WordPress?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Нет, только чистый код (HTML/CSS/JS). Максимальная производительность и контроль.</div></div></div>
+        </div>
+    </section>
+
+    <section id="process">
+        <h2 class="section-title slide-in-left">Как мы будем работать</h2>
+        <div class="grid">
+            <div class="card slide-in-left" style="animation-delay:0.1s"><h3>1. Брифинг 📝</h3><p>Ты заполняешь умную форму ниже. Я получаю идеальное ТЗ, и мы обсуждаем детали.</p></div>
+            <div class="card slide-in-right" style="animation-delay:0.2s"><h3>2. Черновик 🎨</h3><p>Я делаю первый вариант. Ты смотришь, вносишь правки. Мы шлифуем дизайн и структуру.</p></div>
+            <div class="card slide-in-left" style="animation-delay:0.3s"><h3>3. Код и Запуск 🚀</h3><p>Превращаю макет в быстрый код. Заливаю на твой хостинг, и сайт покоряет интернет!</p></div>
         </div>
     </section>
 
     <section id="brief">
         <h2 class="section-title slide-in-left">Сгенерировать Бриф</h2>
-        <p class="slide-in-right" style="margin-bottom: 20px; color: var(--text-secondary);">Ответь на вопросы, и я сформирую готовое ТЗ!</p>
-        <div class="brief-form slide-in-left" style="animation-delay: 0.1s;">
+        <p class="slide-in-right" style="margin-bottom:25px;color:var(--text-secondary);font-size:1.1rem">Ответь на вопросы, и я сформирую готовое ТЗ!</p>
+        <div class="brief-form slide-in-left">
             <label>1. Как к тебе обращаться?</label><input type="text" id="b-name" placeholder="Твой ник или имя">
             <label>2. Какой тариф?</label>
             <select id="b-type"><option value="Веб-Мал (НР)">Веб-Мал (НР) - от 240₽</option><option value="Веб-Мал (Р)">Веб-Мал (Р) - от 320₽</option><option value="Веб-Средний (НР)">Веб-Средний (НР) - от 320₽</option><option value="Веб-Средний (Р)">Веб-Средний (Р) - от 560₽</option><option value="Веб-Большой (НР)">Веб-Большой (НР) - от 760₽</option><option value="Веб-Большой (Р)">Веб-Большой (Р) - от 1060₽</option></select>
@@ -250,20 +302,44 @@ section { padding-top: 220px !important; }
             <label>7. Стиль/цвета?</label><input type="text" id="b-style" placeholder="Черно-белый, оранжевый...">
             <label>8. Сроки?</label><input type="text" id="b-deadline" placeholder="К концу месяца...">
             <label>9. Контакт для связи</label><input type="text" id="b-contact" placeholder="@ник_в_max">
-            <button class="btn-primary" onclick="generateBrief()" style="width: 100%; margin-top: 10px;">🦊 Сгенерировать ТЗ</button>
+            <button class="btn-primary" onclick="generateBrief()" style="width:100%;margin-top:15px">🦊 Сгенерировать ТЗ</button>
             <textarea class="brief-output" id="b-output" readonly placeholder="Здесь появится бриф..."></textarea>
-            <button class="btn-primary" onclick="copyText('b-output')" style="width: 100%; margin-top: 10px; background: var(--bg-card); color: var(--accent); border: 1px solid var(--accent);">📋 Скопировать</button>
+            <button class="btn-primary" onclick="copyText('b-output')" style="width:100%;margin-top:15px;background:var(--bg-card);color:var(--accent);border:1px solid var(--accent)">📋 Скопировать</button>
         </div>
     </section>
 
-    <footer style="padding: 50px 10%; text-align: center; border-top: 1px solid var(--border);">
-        <h2 class="fade-in" style="color: var(--accent); margin-bottom: 20px;">Готов захватывать мир?</h2>
-        <p class="fade-in" style="color: var(--text-secondary); margin-bottom: 20px;">Свяжись со мной напрямую:</p>
+    <footer style="padding:60px 10%;text-align:center;border-top:1px solid var(--border)">
+        <h2 class="fade-in" style="color:var(--accent);margin-bottom:25px;font-size:2rem">Готов захватывать мир?</h2>
+        <p class="fade-in" style="color:var(--text-secondary);margin-bottom:25px;font-size:1.15rem">Свяжись со мной напрямую:</p>
         <a href="tel:+79272858194" class="phone-link fade-in">📞 +7 (927) 285-81-94</a>
-        <p style="margin-top: 40px; font-size: 0.9rem; color: var(--text-secondary);">© 2026 ТехноЛис. Сделано с 🦊 и ❤️</p>
+        <p style="margin-top:50px;font-size:0.95rem;color:var(--text-secondary)">© 2026 ТехноЛис. Сделано с 🦊 и ❤️</p>
     </footer>
 
+    <!-- ПАСХАЛКИ -->
+    <div class="easter-modal" id="tzModal"><div class="easter-content"><h2>🤯 ЧЁ БЛЯТЬ, ГДЕ НАЧИНАЕТСЯ ТЗ?!</h2><p>Клиент: "Хочу сайт, чтобы был как у Apple, только для моего гаража, и чтобы 3D-машина летала."
+
+Ты: "Окей, а ТЗ есть?"
+
+Клиент: "Какое ТЗ? Я же сказал — как у Apple!"
+
+Ты: 💀</p><button class="close-modal" onclick="document.getElementById('tzModal').classList.remove('active')">Закрыть</button></div></div>
+
+    <div class="easter-modal" id="hackModal"><div class="easter-content"><h2>🔓 ВЗЛОМ ПЕНТАГОНА...</h2><p id="hackText">Обход фаервола... 0%</p><button class="close-modal" onclick="document.getElementById('hackModal').classList.remove('active')">Закрыть</button></div></div>
+
+    <div class="dev-console" id="devConsole"><div id="consoleOutput">> Добро пожаловать в консоль ТехноЛиса!<br>> Введите 'help' для списка команд.<br></div><div style="display:flex;align-items:center;margin-top:10px"><span style="color:#0f0;margin-right:10px">$</span><input type="text" id="consoleInput" placeholder="Введите команду..." onkeypress="if(event.key==='Enter')executeCommand()"></div></div>
+
     <script>
+        // ПРЕЛОАДЕР
+        window.addEventListener('load', () => setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 1500));
+
+        // SCROLL PROGRESS
+        window.addEventListener('scroll', () => {
+            const st = document.documentElement.scrollTop;
+            const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scrollProgress').style.width = (st / sh * 100) + '%';
+        });
+
+        // ЗАГРУЗКА ДАННЫХ
         async function loadSiteData() {
             try {
                 const res = await fetch('_data/site.json?t=' + Date.now());
@@ -273,145 +349,186 @@ section { padding-top: 220px !important; }
                     document.getElementById('heroSubtitle').textContent = data.settings.hero_subtitle + ' Пацан умеет и могёт!';
                     document.getElementById('aboutText').textContent = data.settings.about_text;
                     if (data.settings.phone) {
-                        const clean = data.settings.phone.replace(/[^0-9+]/g, '');
-                        document.querySelector('.phone-link').href = 'tel:' + clean;
+                        const c = data.settings.phone.replace(/[^0-9+]/g, '');
+                        document.querySelector('.phone-link').href = 'tel:' + c;
                         document.querySelector('.phone-link').textContent = '📞 ' + data.settings.phone;
                     }
                 }
-                if (data.projects && data.projects.length > 0) {
-                    document.getElementById('projectsGrid').innerHTML = data.projects.sort((a, b) => a.order - b.order).map((p, i) => 
-                        `<div class="card ${i % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}" style="animation-delay: ${i * 0.1}s;"><h3>${p.icon} ${p.title}</h3><p>${p.description}</p><br><a href="${p.link}" target="_blank">Посмотреть →</a></div>`
+                if (data.projects && data.projects.length) {
+                    document.getElementById('projectsGrid').innerHTML = data.projects.sort((a,b) => a.order - b.order).map((p,i) =>
+                        `<div class="card ${i%2===0?'slide-in-left':'slide-in-right'}" style="animation-delay:${i*0.1}s"><h3>${p.icon} ${p.title}</h3><p>${p.description}</p><br><a href="${p.link}" target="_blank">Посмотреть →</a></div>`
                     ).join('');
                 }
-                if (data.reviews && data.reviews.length > 0) {
-                    document.getElementById('reviewsGrid').innerHTML = data.reviews.map((r, i) => 
-                        `<div class="card ${i % 2 === 0 ? 'slide-in-left' : 'slide-in-right'} review-card" style="animation-delay: ${i * 0.1}s;"><div class="review-header"><div class="review-avatar">${r.avatar}</div><div><h4>${r.name}</h4><div class="review-stars">${'⭐'.repeat(r.rating)}</div></div></div><p class="review-text">"${r.text}"</p><div class="review-date">${r.date}</div></div>`
+                if (data.reviews && data.reviews.length) {
+                    document.getElementById('reviewsGrid').innerHTML = data.reviews.map((r,i) =>
+                        `<div class="card ${i%2===0?'slide-in-left':'slide-in-right'} review-card" style="animation-delay:${i*0.1}s"><div class="review-header"><div class="review-avatar">${r.avatar}</div><div><h4>${r.name}</h4><div class="review-stars">${'⭐'.repeat(r.rating)}</div></div></div><p class="review-text">"${r.text}"</p><div class="review-date">${r.date}</div></div>`
                     ).join('');
                 }
-                if (data.faq && data.faq.length > 0) {
-                    document.getElementById('faqList').innerHTML = data.faq.sort((a, b) => a.order - b.order).map((f, i) => 
-                        `<div class="faq-item ${i % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}" style="animation-delay: ${i * 0.1}s;"><div class="faq-question"><span>${f.question}</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">${f.answer}</div></div></div>`
+                if (data.faq && data.faq.length) {
+                    document.getElementById('faqList').innerHTML = data.faq.sort((a,b) => a.order - b.order).map((f,i) =>
+                        `<div class="faq-item ${i%2===0?'slide-in-left':'slide-in-right'}" style="animation-delay:${i*0.1}s"><div class="faq-question"><span>${f.question}</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">${f.answer}</div></div></div>`
                     ).join('');
-                    document.querySelectorAll('.faq-question').forEach(q => {
-                        q.addEventListener('click', () => {
-                            const item = q.parentElement;
-                            const isActive = item.classList.contains('active');
-                            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                            if (!isActive) item.classList.add('active');
-                        });
-                    });
+                    initFaq();
                 }
-                setTimeout(typeEffect, 1000);
+                setTimeout(typeEffect, 1600);
                 initObservers();
-            } catch (e) {
-                console.log('Данные не загружены:', e);
-                setTimeout(typeEffect, 1000);
+            } catch(e) {
+                console.log('JSON не загружен:', e);
+                setTimeout(typeEffect, 1600);
                 initObservers();
             }
         }
 
-        async function copyText(elementId) {
-            const text = document.getElementById(elementId).value;
-            if (!text) { alert('Сначала сгенерируй текст! 🦊'); return; }
-            try { await navigator.clipboard.writeText(text); alert('✅ Скопировано!'); }
-            catch { const el = document.getElementById(elementId); el.select(); document.execCommand('copy'); alert('✅ Скопировано!'); }
+        // КОПИРОВАНИЕ
+        async function copyText(id) {
+            const t = document.getElementById(id).value;
+            if (!t) { alert('Сначала сгенерируй текст! 🦊'); return; }
+            try { await navigator.clipboard.writeText(t); alert('✅ Скопировано!'); }
+            catch { document.getElementById(id).select(); document.execCommand('copy'); alert('✅ Скопировано!'); }
         }
 
+        // ПЕЧАТНАЯ МАШИНКА
         function typeEffect() {
             const el = document.getElementById('typewriter');
             if (!el) return;
-            const words = ["будущего", "быстро", "красиво", "надёжно", "с душой", "на чистом коде"];
-            let wordIndex = 0, charIndex = 0, isDeleting = false;
+            const words = ["будущего","быстро","красиво","надёжно","с душой","на чистом коде"];
+            let wi=0,ci=0,del=false;
             function type() {
-                const word = words[wordIndex];
-                if (isDeleting) { el.textContent = word.substring(0, charIndex - 1); charIndex--; }
-                else { el.textContent = word.substring(0, charIndex + 1); charIndex++; }
-                let speed = isDeleting ? 50 : 150;
-                if (!isDeleting && charIndex === word.length) { speed = 2000; isDeleting = true; }
-                else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; speed = 500; }
-                setTimeout(type, speed);
+                const w = words[wi];
+                if (del) { el.textContent = w.substring(0,ci-1); ci--; }
+                else { el.textContent = w.substring(0,ci+1); ci++; }
+                let s = del ? 50 : 150;
+                if (!del && ci===w.length) { s=2000; del=true; }
+                else if (del && ci===0) { del=false; wi=(wi+1)%words.length; s=500; }
+                setTimeout(type, s);
             }
             type();
         }
 
+        // ЧИСЛА
         function animateNumbers(el) {
-            const target = parseInt(el.getAttribute('data-target'));
-            const step = target / 125;
-            let current = 0;
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) { el.textContent = target; clearInterval(timer); }
-                else el.textContent = Math.floor(current);
-            }, 16);
+            const t = parseInt(el.dataset.target), s = el.dataset.suffix||'', step = t/125;
+            let c = 0;
+            const timer = setInterval(() => { c+=step; if(c>=t){el.textContent=t+s;clearInterval(timer);}else el.textContent=Math.floor(c)+s; }, 16);
         }
 
+        // OBSERVER
         function initObservers() {
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        entry.target.style.animationPlayState = 'running';
-                        if (entry.target.classList.contains('stat-card')) {
-                            const num = entry.target.querySelector('.stat-number');
-                            if (num) animateNumbers(num);
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        e.target.style.animationPlayState = 'running';
+                        if (e.target.classList.contains('stat-card')) {
+                            const n = e.target.querySelector('.stat-number');
+                            if (n) animateNumbers(n);
                         }
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
-                if (el.classList.contains('slide-in-left') || el.classList.contains('slide-in-right')) el.style.animationPlayState = 'paused';
+            document.querySelectorAll('.fade-in,.slide-in-left,.slide-in-right').forEach(el => {
+                if (el.classList.contains('slide-in-left')||el.classList.contains('slide-in-right')) el.style.animationPlayState='paused';
                 obs.observe(el);
             });
         }
 
+        // FAQ
+        function initFaq() {
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.addEventListener('click', () => {
+                    const item = q.parentElement, active = item.classList.contains('active');
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                    if (!active) item.classList.add('active');
+                });
+            });
+        }
+        initFaq();
+
+        // ГЕНЕРАТОРЫ
         function generateBrief() {
-            const n = document.getElementById('b-name').value || 'Аноним';
-            const t = document.getElementById('b-type').value;
-            const ni = document.getElementById('b-niche').value || 'Не указано';
-            const a = document.getElementById('b-audience').value || 'Не указано';
-            const g = document.getElementById('b-goal').value || 'Не указано';
-            const r = document.getElementById('b-refs').value || 'Нет';
-            const s = document.getElementById('b-style').value || 'На усмотрение';
-            const d = document.getElementById('b-deadline').value || 'Обсудим';
-            const c = document.getElementById('b-contact').value || 'Не указан';
-            document.getElementById('b-output').value = `Привет, ТехноЛис! 🦊\nМеня зовут: ${n}\nТариф: ${t}\nТематика: ${ni}\nАудитория: ${a}\nЦель: ${g}\nРеференсы: ${r}\nСтиль: ${s}\nСроки: ${d}\nКонтакт: ${c}`;
+            const n=document.getElementById('b-name').value||'Аноним',t=document.getElementById('b-type').value,ni=document.getElementById('b-niche').value||'Не указано',a=document.getElementById('b-audience').value||'Не указано',g=document.getElementById('b-goal').value||'Не указано',r=document.getElementById('b-refs').value||'Нет',s=document.getElementById('b-style').value||'На усмотрение',d=document.getElementById('b-deadline').value||'Обсудим',c=document.getElementById('b-contact').value||'Не указан';
+            document.getElementById('b-output').value=`Привет, ТехноЛис! 🦊\nМеня зовут: ${n}\nТариф: ${t}\nТематика: ${ni}\nАудитория: ${a}\nЦель: ${g}\nРеференсы: ${r}\nСтиль: ${s}\nСроки: ${d}\nКонтакт: ${c}`;
         }
-
         function generateReview() {
-            const n = document.getElementById('r-name').value || 'Аноним';
-            const r = document.getElementById('r-rating').value;
-            const t = document.getElementById('r-text').value || 'Отличная работа!';
-            document.getElementById('r-output').value = `Привет, ТехноЛис! 🦊\nИмя: ${n}\nОценка: ${'⭐'.repeat(r)} (${r}/5)\nОтзыв: "${t}"`;
+            const n=document.getElementById('r-name').value||'Аноним',r=document.getElementById('r-rating').value,t=document.getElementById('r-text').value||'Отличная работа!';
+            document.getElementById('r-output').value=`Привет, ТехноЛис! 🦊\nИмя: ${n}\nОценка: ${'⭐'.repeat(r)} (${r}/5)\nОтзыв: "${t}"`;
         }
 
-        const themes = ['dark', 'light', 'fire', 'snow', 'night'];
-        const icons = ['🌙', '☀️', '🔥', '❄️', '🌌'];
-        let ti = 0;
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            ti = (ti + 1) % themes.length;
-            document.documentElement.setAttribute('data-theme', themes[ti]);
-            document.getElementById('themeToggle').textContent = icons[ti] + ' Тема';
+        // ТЕМЫ
+        const themes=['dark','light','fire','snow','night'],icons=['🌙','☀️','🔥','❄️','🌌'];
+        let ti=0;
+        const saved=localStorage.getItem('theme');
+        if(saved&&themes.includes(saved)){ti=themes.indexOf(saved);document.documentElement.setAttribute('data-theme',saved);}
+        document.getElementById('themeToggle').textContent=icons[ti]+' Тема';
+        document.getElementById('themeToggle').addEventListener('click',()=>{
+            ti=(ti+1)%themes.length;
+            document.documentElement.setAttribute('data-theme',themes[ti]);
+            localStorage.setItem('theme',themes[ti]);
+            document.getElementById('themeToggle').textContent=icons[ti]+' Тема';
         });
 
-        const stb = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => { stb.classList.toggle('visible', window.scrollY > 300); });
-        stb.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        // SCROLL TOP
+        const stb=document.getElementById('scrollTop');
+        window.addEventListener('scroll',()=>stb.classList.toggle('visible',window.scrollY>300));
+        stb.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-        const canvas = document.getElementById('particles-canvas'), ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const particles = Array.from({ length: 40 }, () => ({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, size: Math.random() * 2 + 1 }));
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
-            particles.forEach(p => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-            });
-            requestAnimationFrame(animate);
+        // ЧАСТИЦЫ
+        const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');
+        canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+        window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+        const particles=Array.from({length:40},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5,size:Math.random()*2+1}));
+        function animateParticles(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+            particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();});
+            requestAnimationFrame(animateParticles);
         }
-        animate();
+        animateParticles();
+
+        // ПАСХАЛКИ
+        let secretCode='';
+        window.addEventListener('keydown',e=>{
+            secretCode+=e.key.toLowerCase();
+            if(secretCode.length>10)secretCode=secretCode.slice(-10);
+            if(secretCode==='тз'||secretCode==='tz'){document.getElementById('tzModal').classList.add('active');secretCode='';}
+            if(secretCode==='matrix'){enableMatrix(10000);secretCode='';}
+            if(secretCode==='fox'){foxRain(5000);secretCode='';}
+            if(secretCode==='panic'){document.body.style.animation='panicFlash 0.2s infinite';setTimeout(()=>document.body.style.animation='',3000);secretCode='';}
+            if(secretCode==='hack'){document.getElementById('hackModal').classList.add('active');startHack();secretCode='';}
+        });
+        document.addEventListener('keydown',e=>{
+            if(e.key==='`'||e.key==='~'){document.getElementById('devConsole').classList.toggle('active');if(document.getElementById('devConsole').classList.contains('active'))document.getElementById('consoleInput').focus();}
+        });
+        function executeCommand(){
+            const inp=document.getElementById('consoleInput'),out=document.getElementById('consoleOutput'),cmd=inp.value.trim().toLowerCase();
+            if(cmd==='help')out.innerHTML+='> help, about, coffee, clear, matrix, fox<br>';
+            else if(cmd==='about')out.innerHTML+='> ТехноЛис — 11-летний веб-разработчик. Создатель FOXKOD и Snowy Deserts. 🦊<br>';
+            else if(cmd==='coffee')out.innerHTML+='> ☕☕☕ Уровень кофеина: КРИТИЧЕСКИЙ! 🚀<br>';
+            else if(cmd==='clear')out.innerHTML='> Консоль очищена.<br>';
+            else if(cmd==='matrix'){enableMatrix(10000);out.innerHTML+='> Матрица активирована! 🟢<br>';}
+            else if(cmd==='fox'){foxRain(5000);out.innerHTML+='> Лисья атака! 🦊<br>';}
+            else out.innerHTML+='> Неизвестная команда. Введите "help".<br>';
+            inp.value='';out.scrollTop=out.scrollHeight;
+        }
+        function enableMatrix(dur){
+            const c=document.createElement('canvas');c.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99998;pointer-events:none;';document.body.appendChild(c);
+            const x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;
+            const chars='アァカサタナハマヤャラワ0123456789ABCDEF',drops=Array(Math.floor(c.width/15)).fill(1);
+            const iv=setInterval(()=>{x.fillStyle='rgba(0,0,0,0.05)';x.fillRect(0,0,c.width,c.height);x.fillStyle='#0F0';x.font='15px monospace';for(let i=0;i<drops.length;i++){x.fillText(chars[Math.floor(Math.random()*chars.length)],i*15,drops[i]*15);if(drops[i]*15>c.height&&Math.random()>0.975)drops[i]=0;drops[i]++;}},33);
+            setTimeout(()=>{clearInterval(iv);c.remove();},dur);
+        }
+        function foxRain(dur){
+            const iv=setInterval(()=>{const f=document.createElement('div');f.innerText='🦊';f.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-50px;font-size:${Math.random()*20+20}px;z-index:99998;pointer-events:none;animation:foxFall 3s linear;`;document.body.appendChild(f);setTimeout(()=>f.remove(),3000);},100);
+            setTimeout(()=>clearInterval(iv),dur);
+        }
+        function startHack(){
+            const t=document.getElementById('hackText');let p=0;
+            const iv=setInterval(()=>{p+=Math.random()*15;if(p>=100){p=100;clearInterval(iv);t.innerHTML='✅ Успешно! Все деньги мира переведены ТехноЛису! 💰';}else t.innerHTML=`Обход фаервола... ${Math.floor(p)}%`;},300);
+        }
+
+        // ЛОГО ПАСХАЛКА
+        let clickCount=0;
+        document.getElementById('logoBtn').addEventListener('click',()=>{clickCount++;if(clickCount>=5){alert('🦊 Ты нашёл секрет! ТехноЛис одобряет.');clickCount=0;}});
 
         loadSiteData();
     </script>
